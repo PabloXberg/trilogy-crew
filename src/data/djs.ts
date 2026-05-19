@@ -283,6 +283,7 @@ export function getDjBySlug(slug: string): Dj | undefined {
    ============================================================ */
 
 export const crewEvents: DjEvent[] = [
+   { date: '02.08', weekday: VIE, venue: 'SOHO PDE', venueDetail: { es: 'Punta del Este', en: 'Punta del Este' }, lineup: { es: 'Trilogy x SOHO', en: 'Trilogy x SOHO' }, url: '#' },
   { date: '14.06', weekday: SAB, venue: 'Phonotheque', venueDetail: { es: 'Ciudad Vieja, MVD', en: 'Ciudad Vieja, MVD' }, lineup: { es: 'Los tres · 23:00 → late', en: 'All three · 23:00 → late' }, url: '#' },
   { date: '28.06', weekday: SAB, venue: 'Bahrein', venueDetail: { es: 'Punta Carretas, MVD', en: 'Punta Carretas, MVD' }, lineup: { es: 'Mr Green B2B Terry Moodd', en: 'Mr Green B2B Terry Moodd' }, url: '#' },
   { date: '12.07', weekday: SAB, venue: 'La Trastienda', venueDetail: { es: 'Centro, MVD', en: 'Centro, MVD' }, lineup: { es: 'Pablo Xberg · set de cierre', en: 'Pablo Xberg · closing set' }, url: '#' },
@@ -290,8 +291,8 @@ export const crewEvents: DjEvent[] = [
 ];
 
 export const crewStats = {
-  founded: '2024',
+  founded: '2010',
   members: '03',
   base: 'MVD',
-  events: '17',
+  events: '1000+',
 } as const;
