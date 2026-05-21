@@ -4,8 +4,10 @@ import { getDjBySlug } from '../data/djs';
 import EventList from '../components/EventList';
 import Footer from '../components/Footer';
 import Gallery from '../components/Gallery';
+import DjExtras from '../components/DjExtras';
 import PresskitBox from '../components/PresskitBox';
 import SocialLinks from '../components/SocialLinks';
+import SpotifyEmbed from '../components/SpotifyEmbed';
 import Tracks from '../components/Tracks';
 
 export default function DjPage() {
@@ -22,7 +24,7 @@ export default function DjPage() {
       <div className="dj-hero">
         <div className="photo-lg">
           <div className="tag">/// MEMBER {dj.order}</div>
-          <img src={dj.photoUrl} alt={dj.name} />
+          <img src={dj.heroPhotoUrl ?? dj.photoUrl} alt={dj.name} />
         </div>
         <div className="info">
           <div
@@ -44,6 +46,11 @@ export default function DjPage() {
           </h1>
           <div className="role">{pick(dj.role)}</div>
           <div className="quick-meta">
+            {dj.realName && (
+              <div>
+                {t('dj.meta.realname')} <b>{dj.realName}</b>
+              </div>
+            )}
             <div>
               {t('dj.meta.based')} <b>{pick(dj.meta.based)}</b>
             </div>
@@ -74,6 +81,9 @@ export default function DjPage() {
         </div>
       </div>
 
+      {/* Optional press-kit sections (releases / clubs / lineups / rider) */}
+      <DjExtras dj={dj} />
+
       {/* Tracks */}
       <div className="dj-section">
         <div className="sub-head">
@@ -81,6 +91,11 @@ export default function DjPage() {
           <h2>{t('dj.tracks.title')}</h2>
         </div>
         <Tracks urls={dj.trackUrls} />
+        {dj.spotifyArtistId && (
+          <div style={{ marginTop: 24 }}>
+            <SpotifyEmbed artistId={dj.spotifyArtistId} />
+          </div>
+        )}
       </div>
 
       {/* Socials */}
@@ -98,20 +113,22 @@ export default function DjPage() {
           <span className="num">{t('dj.gallery.num')}</span>
           <h2>{t('dj.gallery.title')}</h2>
         </div>
-        <Gallery slots={8} />
+        <Gallery photos={dj.gallery} slots={8} />
       </div>
 
       {/* Presskit */}
       <PresskitBox url={dj.presskit.url} size={dj.presskit.size} />
 
       {/* Upcoming */}
-      <div className="dj-section">
-        <div className="sub-head">
-          <span className="num">{t('dj.upcoming.num')}</span>
-          <h2>{t('dj.upcoming.title')}</h2>
+      {dj.events && dj.events.length > 0 && (
+        <div className="dj-section">
+          <div className="sub-head">
+            <span className="num">{t('dj.upcoming.num')}</span>
+            <h2>{t('dj.upcoming.title')}</h2>
+          </div>
+          <EventList events={dj.events} />
         </div>
-        <EventList events={dj.events} />
-      </div>
+      )}
 
       <Footer variant="dj" djName={dj.name.toUpperCase()} email={dj.email} />
     </section>

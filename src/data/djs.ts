@@ -1,13 +1,13 @@
 /**
  * Trilogy Crew — DJ data.
  *
- * To add a new DJ: append a new object to the `djs` array. All TypeScript
- * types are enforced, so the compiler will tell you what's missing.
+ * To add a new DJ: append a new object to the `djs` array. TypeScript enforces
+ * the required fields; optional fields (gallery, spotify, clubs, releases, rider,
+ * sharedLineup, etc.) only render their section when present.
  *
- * Strings that need translation use a `Localized` shape: `{ es, en }`.
- * Generic UI strings (button labels, nav, etc.) live in `src/i18n/translations.ts`.
+ * Order in this array = order shown on the site (nav, home grid, member numbers).
  *
- * HTML allowed inside bio/lead strings: only <em>. Renders italic accent color.
+ * Localized strings use `{ es, en }`. Generic UI strings live in i18n/translations.ts.
  */
 
 export type Lang = 'es' | 'en';
@@ -28,28 +28,34 @@ export type SocialPlatform =
 
 export interface Social {
   platform: SocialPlatform;
-  /** Display label, e.g. "SoundCloud" */
   label: string;
-  /** Handle as shown to the user, e.g. "@mrgreen_uy" */
   handle: string;
-  /** Full URL. Use "#" if not yet known. */
   url: string;
-  /** CTA label shown bottom-right of the social card. */
   cta: Localized;
 }
 
 export interface DjEvent {
-  /** "DD.MM" */
   date: string;
-  /** Localized weekday short form, e.g. { es: 'SAB', en: 'SAT' } */
   weekday: Localized;
   venue: string;
-  /** Subtitle below the venue, e.g. "Ciudad Vieja, MVD" */
   venueDetail: Localized;
-  /** Lineup / time info, e.g. "23:00 → late · B2B" */
   lineup: Localized;
-  /** Link to event page (RA, Instagram, etc). "#" if unknown. */
   url: string;
+}
+
+export interface Release {
+  title: string;
+  label: string;
+}
+
+export interface RiderOption {
+  label: Localized;
+  gear: string;
+}
+
+export interface PlayedWith {
+  international: string[];
+  national: string[];
 }
 
 export interface Dj {
@@ -59,16 +65,20 @@ export interface Dj {
   order: string;
   /** Single letter label like "A" */
   letter: string;
-  /** Display name in one line, e.g. "Mr Green" */
+  /** Display name in one line */
   name: string;
+  /** Real name (optional, shown in bio meta) */
+  realName?: string;
   /** Display name split into two lines for the hero h1 */
   nameLines: [string, string];
-  /** Path to portrait, relative to /public (e.g. "/assets/mr-green.png") */
+  /** Square portrait for the home card (relative to /public) */
   photoUrl: string;
+  /** Optional taller portrait for the DJ page hero. Falls back to photoUrl. */
+  heroPhotoUrl?: string;
   /** Short role / style descriptor */
   role: Localized;
   bio: {
-    /** Big lead quote. May contain <em>...</em> */
+    /** Big lead quote. */
     lead: Localized;
     /** Paragraphs in order */
     paragraphs: Localized[];
@@ -76,25 +86,33 @@ export interface Dj {
   meta: {
     based: Localized;
     origin: Localized;
-    /** Year, e.g. "2018" */
     activeSince: string;
-    /** e.g. "128–138" */
     bpmRange: string;
   };
   socials: Social[];
   events: DjEvent[];
   presskit: {
-    /** e.g. "24MB" */
     size: string;
-    /** Path to PDF, or "#" if not ready */
     url: string;
   };
   email: string;
-  /**
-   * Two SoundCloud URLs to embed as iframes.
-   * Usually [profile_url, profile_url + "/tracks"]
-   */
   trackUrls: [string, string];
+
+  /* ---- Optional rich sections (render only if present) ---- */
+  /** Spotify artist ID, enables the Spotify embed. e.g. "1MjLkJ3DdPGmEBzhm2Pj8B" */
+  spotifyArtistId?: string;
+  /** Genre line shown under the bio */
+  genres?: Localized;
+  /** Gallery photo URLs. If present & non-empty, replaces the placeholder grid. */
+  gallery?: string[];
+  /** Notable clubs / venues played */
+  clubs?: string[];
+  /** Artists shared a lineup with */
+  playedWith?: PlayedWith;
+  /** Official releases */
+  releases?: Release[];
+  /** Technical rider options */
+  rider?: RiderOption[];
 }
 
 const ctaListen: Localized = { es: 'ESCUCHAR ↗', en: 'LISTEN ↗' };
@@ -102,19 +120,125 @@ const ctaFollow: Localized = { es: 'SEGUIR ↗', en: 'FOLLOW ↗' };
 const ctaStream: Localized = { es: 'STREAM ↗', en: 'STREAM ↗' };
 const ctaProfile: Localized = { es: 'PERFIL ↗', en: 'PROFILE ↗' };
 const ctaBuy: Localized = { es: 'COMPRAR ↗', en: 'BUY ↗' };
-const ctaMixes: Localized = { es: 'MIXES ↗', en: 'MIXES ↗' };
+const ctaMail: Localized = { es: 'ESCRIBIR ↗', en: 'EMAIL ↗' };
 const SAB: Localized = { es: 'SAB', en: 'SAT' };
 const VIE: Localized = { es: 'VIE', en: 'FRI' };
-const JUE: Localized = { es: 'JUE', en: 'THU' };
 
 export const djs: Dj[] = [
   /* ============================================================
-     01 — MR GREEN
+     01 — TERRY MOOD  (Terry Pérez)
+     Info real desde el press kit oficial.
+     ============================================================ */
+  {
+    slug: 'terry-mood',
+    order: '01',
+    letter: 'A',
+    name: 'Terry Mood',
+    realName: 'Terry Pérez',
+    nameLines: ['TERRY', 'MOOD'],
+    photoUrl: '/assets/terry-card.jpg',
+    heroPhotoUrl: '/assets/terry-hero.jpg',
+    role: {
+      es: 'House · Deep · Tech House',
+      en: 'House · Deep · Tech House',
+    },
+    bio: {
+      lead: {
+        es: '"Un DJ que no solo hace bailar, conecta con el alma de la pista."',
+        en: '"A DJ who doesn\'t just make you dance — he connects with the soul of the floor."',
+      },
+      paragraphs: [
+        {
+          es: 'Terry Mood es un arquitecto sonoro que entiende la música como un espacio de resguardo, conexión y comunión. Su propuesta nace de la cultura clubbing como lugar de encuentro, donde cada set es una historia cargada de energía, groove y estética particular. Con un enfoque siempre alejado del mainstream, busca provocar una experiencia sonora auténtica, vibrante y emocional.',
+          en: 'Terry Mood is a sonic architect who understands music as a space of refuge, connection and communion. His vision is born from club culture as a meeting place, where every set is a story loaded with energy, groove and its own particular aesthetic. With an approach always far from the mainstream, he seeks to provoke an authentic, vibrant and emotional sonic experience.',
+        },
+        {
+          es: 'Comenzó como DJ en 2003, a los 16 años, explorando los primeros softwares de mezcla y evolucionando hacia bandejas dobles y vinilos. Sus primeras fiestas las organizaba él mismo junto a Pablo Xberg. En 2008 obtuvo su primera residencia en Cain Dance y desde 2011 sostiene una residencia de 13 años en Soho Punta del Este.',
+          en: 'He started DJing in 2003, at 16, exploring the first mixing software and evolving towards twin decks and vinyl. His first parties were ones he organized himself alongside Pablo Xberg. In 2008 he landed his first residency at Cain Dance, and since 2011 he has held a 13-year residency at Soho Punta del Este.',
+        },
+        {
+          es: 'Su sonido se caracteriza por bajos potentes, groove contagioso y una estética retro actualizada. Rechaza lo predecible y busca siempre la sorpresa sin salirse del sonido de pista: un house refinado, elegante y lleno de energía clubber.',
+          en: 'His sound is defined by powerful bass, contagious groove and an updated retro aesthetic. He rejects the predictable and always chases surprise without leaving the dancefloor sound: refined, elegant house full of clubber energy.',
+        },
+      ],
+    },
+    meta: {
+      based: { es: 'Montevideo', en: 'Montevideo' },
+      origin: { es: 'Uruguay', en: 'Uruguay' },
+      activeSince: '2003',
+      bpmRange: '120–128',
+    },
+    genres: {
+      es: 'House · Deep · Minimal · Deep Tech · Tech House',
+      en: 'House · Deep · Minimal · Deep Tech · Tech House',
+    },
+    socials: [
+      { platform: 'soundcloud', label: 'SoundCloud', handle: '@terrymooduy', url: 'https://soundcloud.com/terrymooduy', cta: ctaListen },
+      { platform: 'spotify', label: 'Spotify', handle: 'Terry Mood', url: 'https://open.spotify.com/artist/1MjLkJ3DdPGmEBzhm2Pj8B', cta: ctaStream },
+      { platform: 'instagram', label: 'Instagram', handle: '@terry__mood', url: 'https://www.instagram.com/terry__mood/', cta: ctaFollow },
+      { platform: 'facebook', label: 'Bookings', handle: 'contacto.terryperez', url: 'mailto:contacto.terryperez@gmail.com', cta: ctaMail },
+    ],
+    spotifyArtistId: '1MjLkJ3DdPGmEBzhm2Pj8B',
+    gallery: [
+      '/assets/terry-1.jpg',
+      '/assets/terry-2.jpg',
+      '/assets/terry-3.jpg',
+      '/assets/terry-4.jpg',
+      '/assets/terry-5.jpg',
+      '/assets/terry-6.jpg',
+      '/assets/terry-7.jpg',
+      '/assets/terry-logo.jpg',
+    ],
+    clubs: [
+      'Soho Punta del Este',
+      'Cain Dance',
+      'Danzeria',
+      'W-Lounge',
+      'Dreamhouse',
+      'Ava Club (Berlín)',
+      'LA Fianna (Barcelona)',
+      'Sunset Pilar (Argentina)',
+      'Cloverfield (Argentina)',
+      'Galeras Beach Club (Brasil)',
+      'Marias @ Green Valley (Brasil)',
+      'Boombox',
+      'Full Moon (Punta del Este)',
+      'Ovo (Punta del Este)',
+      'Ocean Club (Punta del Este)',
+      'Kultoo',
+    ],
+    playedWith: {
+      international: [
+        'Barem', 'Diego Ro-k', 'Deep Mariano', 'DJ Pp', 'Andrea Oliva', 'DJ Glen',
+        'Basel Darrwish', 'Aldo Cadiz', 'Luca Bachetti', 'Cour-T', 'Umho',
+        'Tomas Saenz', 'Ghezz', 'Nasyou', 'Miguel Silver', 'Tommy Whal', 'Tomy Disco',
+      ],
+      national: [
+        'Koolt', 'Manglus', 'Mr. Green', 'Luciano Elvira',
+        'Seba Rodríguez', 'Detected', 'Diego Acosta', 'Vale Volpe',
+      ],
+    },
+    releases: [{ title: 'House 33', label: 'Late Ninety' }],
+    rider: [
+      { label: { es: 'Opción 1', en: 'Option 1' }, gear: '3× CDJ-3000 · DJM-V10' },
+      { label: { es: 'Opción 2', en: 'Option 2' }, gear: '3× CDJ-2000NXS · DJM-900' },
+    ],
+    events: [],
+    presskit: { size: 'PDF', url: '/assets/terry-mood-presskit.pdf' },
+    email: 'contacto.terryperez@gmail.com',
+    trackUrls: [
+      'https://soundcloud.com/terrymooduy',
+      'https://soundcloud.com/terrymooduy/tracks',
+    ],
+  },
+
+  /* ============================================================
+     02 — MR GREEN   (placeholder hasta tener su info real)
      ============================================================ */
   {
     slug: 'mr-green',
-    order: '01',
-    letter: 'A',
+    order: '02',
+    letter: 'B',
     name: 'Mr Green',
     nameLines: ['MR', 'GREEN'],
     photoUrl: '/assets/mr-green.png',
@@ -124,8 +248,8 @@ export const djs: Dj[] = [
     },
     bio: {
       lead: {
-        es: '"Si la pista no suda, <em>no es la pista correcta</em>."',
-        en: '"If the floor isn\'t sweating, <em>it\'s the wrong floor</em>."',
+        es: '"Si la pista no suda, no es la pista correcta."',
+        en: '"If the floor isn\'t sweating, it\'s the wrong floor."',
       },
       paragraphs: [
         {
@@ -133,8 +257,8 @@ export const djs: Dj[] = [
           en: 'Mr Green was forged in Uruguay\'s underground circuit — secret parties and Montevideo rooftops. His sound negotiates between tribal techno and groove-heavy house: rounded kicks, raw percussion and a sense of timing that comes from many nights behind the decks.',
         },
         {
-          es: 'Residente en eventos selectos del cono sur, ha compartido cabina con nombres internacionales y locales por igual. Prefiere las cabinas pequeñas y las pistas que reaccionan en tiempo real.',
-          en: 'Resident at select Southern Cone events, he has shared the booth with international and local names alike. Prefers small booths and floors that react in real time.',
+          es: '(Bio provisional — pendiente de completar con la info real de Mr Green.)',
+          en: '(Placeholder bio — pending Mr Green\'s real info.)',
         },
       ],
     },
@@ -150,12 +274,8 @@ export const djs: Dj[] = [
       { platform: 'spotify', label: 'Spotify', handle: 'Mr Green', url: '#', cta: ctaStream },
       { platform: 'facebook', label: 'Facebook', handle: '/mrgreen.uy', url: '#', cta: ctaProfile },
     ],
-    events: [
-      { date: '14.06', weekday: SAB, venue: 'Phonotheque', venueDetail: { es: 'Trilogy night', en: 'Trilogy night' }, lineup: { es: '02:00 – 06:00', en: '02:00 – 06:00' }, url: '#' },
-      { date: '28.06', weekday: SAB, venue: 'Bahrein', venueDetail: { es: 'B2B Terry Mood', en: 'B2B Terry Mood' }, lineup: { es: '23:00 – 03:00', en: '23:00 – 03:00' }, url: '#' },
-      { date: '19.07', weekday: VIE, venue: 'Lotus', venueDetail: { es: 'Pocitos, MVD', en: 'Pocitos, MVD' }, lineup: { es: '04:00 – cierre', en: '04:00 – close' }, url: '#' },
-    ],
-    presskit: { size: '24MB', url: '#' },
+    events: [],
+    presskit: { size: '—', url: '#' },
     email: 'mrgreen@trilogycrew.com',
     trackUrls: [
       'https://soundcloud.com/mrgreen_uy',
@@ -164,12 +284,12 @@ export const djs: Dj[] = [
   },
 
   /* ============================================================
-     02 — PABLO X BERG
+     03 — PABLO XBERG   (placeholder hasta tener su info real)
      ============================================================ */
   {
     slug: 'pablo-xberg',
-    order: '02',
-    letter: 'B',
+    order: '03',
+    letter: 'C',
     name: 'Pablo Xberg',
     nameLines: ['PABLO', 'XBERG'],
     photoUrl: '/assets/pablo-xberg.png',
@@ -179,8 +299,8 @@ export const djs: Dj[] = [
     },
     bio: {
       lead: {
-        es: '"El amanecer <em>se gana</em>."',
-        en: '"The sunrise <em>should be earned</em>."',
+        es: '"El amanecer se gana."',
+        en: '"The sunrise should be earned."',
       },
       paragraphs: [
         {
@@ -188,8 +308,8 @@ export const djs: Dj[] = [
           en: 'Pablo Xberg architects the long climb. Where others chase the drop, he chases the moment before it: the suspended chord, the silence the room holds together. His sets unfold like geological time — nothing happens, until everything has happened.',
         },
         {
-          es: 'Uruguayo de origen, residente en Berlín, paseante de pistas en ambos lados del Atlántico. Cada transición es armónica, cada breakdown está medido. No le pidas un single — no los hace.',
-          en: 'Uruguayan-born, Berlin-based, working both sides of the Atlantic. Every transition is harmonic, every breakdown is paced. Don\'t ask him for a single — he doesn\'t make them.',
+          es: '(Bio provisional — pendiente de completar con la info real de Pablo Xberg.)',
+          en: '(Placeholder bio — pending Pablo Xberg\'s real info.)',
         },
       ],
     },
@@ -205,71 +325,12 @@ export const djs: Dj[] = [
       { platform: 'spotify', label: 'Spotify', handle: 'Pablo Xberg', url: '#', cta: ctaStream },
       { platform: 'bandcamp', label: 'Bandcamp', handle: 'pabloxberg.bc', url: '#', cta: ctaBuy },
     ],
-    events: [
-      { date: '14.06', weekday: SAB, venue: 'Phonotheque', venueDetail: { es: 'Trilogy night', en: 'Trilogy night' }, lineup: { es: '22:00 – 02:00 · opening', en: '22:00 – 02:00 · opening' }, url: '#' },
-      { date: '12.07', weekday: SAB, venue: 'La Trastienda', venueDetail: { es: 'Set de cierre', en: 'Closing set' }, lineup: { es: '19:00 – 23:00', en: '19:00 – 23:00' }, url: '#' },
-      { date: '26.07', weekday: SAB, venue: 'Watergate, Berlin', venueDetail: { es: 'Water floor', en: 'Water floor' }, lineup: { es: '02:00 – 06:00', en: '02:00 – 06:00' }, url: '#' },
-    ],
-    presskit: { size: '22MB', url: '#' },
+    events: [],
+    presskit: { size: '—', url: '#' },
     email: 'pablo@trilogycrew.com',
     trackUrls: [
       'https://soundcloud.com/pabloxberg',
       'https://soundcloud.com/pabloxberg/tracks',
-    ],
-  },
-
-  /* ============================================================
-     03 — TERRY MOO
-     ============================================================ */
-  {
-    slug: 'terry-mood',
-    order: '03',
-    letter: 'C',
-    name: 'Terry Mood',
-    nameLines: ['TERRY', 'MOOD'],
-    photoUrl: '/assets/terry-mood.png',
-    role: {
-      es: 'Afro House · Latin · Percusión',
-      en: 'Afro House · Latin · Percussion',
-    },
-    bio: {
-      lead: {
-        es: '"El tambor <em>estuvo antes</em>. Lo demás es decoración."',
-        en: '"The drum <em>came first</em>. Everything else is decoration."',
-      },
-      paragraphs: [
-        {
-          es: 'Terry Mood toca como si cada track fuera una pregunta a la pista y cada transición su respuesta. Raíces en el candombe, escuela en los mixes de Black Coffee, afilado en las pistas más cálidas del Río de la Plata — sus sets traen Lagos, Montevideo, Ciudad del Cabo y el sótano del club en el que esté.',
-          en: 'Terry Mood plays as if every track is a question to the floor and every transition the answer. Roots in candombe, schooled in Black Coffee mixes, sharpened in the warmer rooms of the Río de la Plata — his sets pull from Lagos, Montevideo, Cape Town and whichever basement he\'s in.',
-        },
-        {
-          es: 'Curador del ciclo mensual "Murga After Hours". Se niega a tocar antes de medianoche salvo que el lugar tenga ventanas al cielo.',
-          en: 'Curates a monthly show called "Murga After Hours". Refuses to play before midnight unless the venue has windows to the sky.',
-        },
-      ],
-    },
-    meta: {
-      based: { es: 'Montevideo', en: 'Montevideo' },
-      origin: { es: 'Uruguay', en: 'Uruguay' },
-      activeSince: '2017',
-      bpmRange: '118–126',
-    },
-    socials: [
-      { platform: 'soundcloud', label: 'SoundCloud', handle: '@terrymooduy', url: 'https://soundcloud.com/terrymooduy', cta: ctaListen },
-      { platform: 'instagram', label: 'Instagram', handle: '@terrymood.uy', url: '#', cta: ctaFollow },
-      { platform: 'spotify', label: 'Spotify', handle: 'Terry Mood', url: '#', cta: ctaStream },
-      { platform: 'mixcloud', label: 'Mixcloud', handle: '/terrymood', url: '#', cta: ctaMixes },
-    ],
-    events: [
-      { date: '14.06', weekday: SAB, venue: 'Phonotheque', venueDetail: { es: 'Trilogy night', en: 'Trilogy night' }, lineup: { es: '06:00 – cierre · cierre', en: '06:00 – close · closer' }, url: '#' },
-      { date: '28.06', weekday: SAB, venue: 'Bahrein', venueDetail: { es: 'B2B Mr Green', en: 'B2B Mr Green' }, lineup: { es: '23:00 – 03:00', en: '23:00 – 03:00' }, url: '#' },
-      { date: '08.08', weekday: JUE, venue: 'Rooftop Sur', venueDetail: { es: 'Pocitos, MVD', en: 'Pocitos, MVD' }, lineup: { es: '19:00 – 23:00 · sunset', en: '19:00 – 23:00 · sunset' }, url: '#' },
-    ],
-    presskit: { size: '19MB', url: '#' },
-    email: 'terrymood@trilogycrew.com',
-    trackUrls: [
-      'https://soundcloud.com/terrymooduy',
-      'https://soundcloud.com/terrymooduy/tracks',
     ],
   },
 ];
@@ -283,16 +344,15 @@ export function getDjBySlug(slug: string): Dj | undefined {
    ============================================================ */
 
 export const crewEvents: DjEvent[] = [
-   { date: '02.08', weekday: VIE, venue: 'SOHO PDE', venueDetail: { es: 'Punta del Este', en: 'Punta del Este' }, lineup: { es: 'Trilogy x SOHO', en: 'Trilogy x SOHO' }, url: '#' },
   { date: '14.06', weekday: SAB, venue: 'Phonotheque', venueDetail: { es: 'Ciudad Vieja, MVD', en: 'Ciudad Vieja, MVD' }, lineup: { es: 'Los tres · 23:00 → late', en: 'All three · 23:00 → late' }, url: '#' },
-  { date: '28.06', weekday: SAB, venue: 'Bahrein', venueDetail: { es: 'Punta Carretas, MVD', en: 'Punta Carretas, MVD' }, lineup: { es: 'Mr Green B2B Terry Moodd', en: 'Mr Green B2B Terry Moodd' }, url: '#' },
+  { date: '28.06', weekday: SAB, venue: 'Bahrein', venueDetail: { es: 'Punta Carretas, MVD', en: 'Punta Carretas, MVD' }, lineup: { es: 'Terry Mood B2B Mr Green', en: 'Terry Mood B2B Mr Green' }, url: '#' },
   { date: '12.07', weekday: SAB, venue: 'La Trastienda', venueDetail: { es: 'Centro, MVD', en: 'Centro, MVD' }, lineup: { es: 'Pablo Xberg · set de cierre', en: 'Pablo Xberg · closing set' }, url: '#' },
   { date: '02.08', weekday: VIE, venue: 'Sala Zitarrosa', venueDetail: { es: 'Punta del Este', en: 'Punta del Este' }, lineup: { es: 'Trilogy x Costa Festival', en: 'Trilogy x Costa Festival' }, url: '#' },
 ];
 
 export const crewStats = {
-  founded: '2010',
+  founded: '2024',
   members: '03',
   base: 'MVD',
-  events: '1000+',
+  events: '17',
 } as const;

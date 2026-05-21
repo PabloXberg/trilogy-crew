@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { useLang } from '../contexts/LangContext';
 import { djs } from '../data/djs';
@@ -9,6 +10,22 @@ export default function Nav() {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const isHome = pathname === '/';
+  const [open, setOpen] = useState(false);
+
+  // Close the mobile menu whenever the route changes
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  // Lock body scroll while the mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [open]);
+
+  const goHome = () => navigate('/');
 
   return (
     <nav className="top">
@@ -16,16 +33,17 @@ export default function Nav() {
         className="brand"
         role="link"
         tabIndex={0}
-        onClick={() => navigate('/')}
+        onClick={goHome}
         onKeyDown={(e) => {
-          if (e.key === 'Enter' || e.key === ' ') navigate('/');
+          if (e.key === 'Enter' || e.key === ' ') goHome();
         }}
       >
         <img src="/assets/logo-white.png" alt="Trilogy Crew" />
         <div className="name">TRILOGY</div>
       </div>
 
-      <ul>
+      {/* Desktop links */}
+      <ul className="nav-links">
         <li>
           <NavLink to="/" end className={isHome ? 'active' : undefined}>
             {t('nav.home')}
@@ -46,6 +64,34 @@ export default function Nav() {
       <div className="right-cluster">
         <LangToggle />
         <Clock />
+        {/* Hamburger — only visible on mobile via CSS */}
+        <button
+          className={`hamburger ${open ? 'is-open' : ''}`}
+          aria-label="Menu"
+          aria-expanded={open}
+          onClick={() => setOpen((v) => !v)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+      </div>
+
+      {/* Mobile slide-down menu */}
+      <div className={`mobile-menu ${open ? 'open' : ''}`}>
+        <NavLink to="/" end onClick={() => setOpen(false)}>
+          {t('nav.home')}
+        </NavLink>
+        {djs.map((dj) => (
+          <NavLink
+            key={dj.slug}
+            to={`/dj/${dj.slug}`}
+            onClick={() => setOpen(false)}
+          >
+            <span className="mm-num">/{dj.order}</span>
+            {dj.name}
+          </NavLink>
+        ))}
       </div>
     </nav>
   );
