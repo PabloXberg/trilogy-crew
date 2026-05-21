@@ -316,8 +316,8 @@ export const djs: Dj[] = [
     meta: {
       based: { es: 'Berlín', en: 'Berlin' },
       origin: { es: 'Uruguay', en: 'Uruguay' },
-      activeSince: '2015',
-      bpmRange: '120–128',
+      activeSince: '2003',
+      bpmRange: '120–130',
     },
     socials: [
       { platform: 'soundcloud', label: 'SoundCloud', handle: '@pabloxberg', url: 'https://soundcloud.com/pabloxberg', cta: ctaListen },
@@ -347,12 +347,12 @@ export const crewEvents: DjEvent[] = [
   { date: '14.06', weekday: SAB, venue: 'Phonotheque', venueDetail: { es: 'Ciudad Vieja, MVD', en: 'Ciudad Vieja, MVD' }, lineup: { es: 'Los tres · 23:00 → late', en: 'All three · 23:00 → late' }, url: '#' },
   { date: '28.06', weekday: SAB, venue: 'Bahrein', venueDetail: { es: 'Punta Carretas, MVD', en: 'Punta Carretas, MVD' }, lineup: { es: 'Terry Mood B2B Mr Green', en: 'Terry Mood B2B Mr Green' }, url: '#' },
   { date: '12.07', weekday: SAB, venue: 'La Trastienda', venueDetail: { es: 'Centro, MVD', en: 'Centro, MVD' }, lineup: { es: 'Pablo Xberg · set de cierre', en: 'Pablo Xberg · closing set' }, url: '#' },
-  { date: '02.08', weekday: VIE, venue: 'Sala Zitarrosa', venueDetail: { es: 'Punta del Este', en: 'Punta del Este' }, lineup: { es: 'Trilogy x Costa Festival', en: 'Trilogy x Costa Festival' }, url: '#' },
+  { date: '02.08', weekday: VIE, venue: 'SOHO', venueDetail: { es: 'Punta del Este', en: 'Punta del Este' }, lineup: { es: 'Trilogy x Costa Festival', en: 'Trilogy x Costa Festival' }, url: '#' },
 ];
 
 export const crewStats = {
-  founded: '2024',
+  founded: '2011',
   members: '03',
   base: 'MVD',
-  events: '17',
+  events: '1000+', // No es un número real, solo un hito simbólico para mostrar en la sección de stats del home.
 } as const;
