@@ -385,8 +385,8 @@ export const crewEvents: DjEvent[] = [
 ];
 
 export const crewStats = {
-  founded: '2024',
-  members: '03',
+  founded: '2010',
+  members: '3+',
   base: 'MVD',
-  events: '17',
+  events: '1000+',
 } as const;
