@@ -256,40 +256,6 @@ main {
   font-style: italic;
   color: var(--text);
 }
-/* Animated equalizer (replaces the old text deco) */
-.equalizer {
-  display: flex;
-  align-items: flex-end;
-  gap: 3px;
-  height: 56px;
-  opacity: 0.85;
-}
-.equalizer span {
-  width: 4px;
-  height: 100%;
-  background: linear-gradient(to top, var(--accent), var(--accent-2));
-  transform-origin: bottom;
-  transform: scaleY(0.15);
-  animation-name: eq;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
-  animation-direction: alternate;
-  border-radius: 1px;
-}
-@keyframes eq {
-  0% {
-    transform: scaleY(0.12);
-  }
-  100% {
-    transform: scaleY(1);
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .equalizer span {
-    animation: none;
-    transform: scaleY(0.4);
-  }
-}
 
 /* ============ SECTIONS ============ */
 .section {
@@ -1127,10 +1093,6 @@ footer.site-footer .copyright {
     grid-template-columns: 1fr;
     gap: 28px;
   }
-  .equalizer {
-    height: 40px;
-    flex-wrap: wrap;
-  }
   .section {
     padding: 64px 18px;
   }
@@ -1173,6 +1135,14 @@ footer.site-footer .copyright {
     padding: 40px 18px;
     gap: 36px;
     min-height: auto;
+  }
+  /* In mobile, ignore the photo-right variant: stack with photo on top. */
+  .dj-hero.photo-right {
+    grid-template-columns: 1fr;
+  }
+  .dj-hero.photo-right .photo-lg,
+  .dj-hero.photo-right .info {
+    order: unset;
   }
   .dj-bio {
     grid-template-columns: 1fr;

@@ -318,7 +318,8 @@ export const djs: Dj[] = [
   },
 
   /* ============================================================
-     03 — PABLO XBERG   (placeholder hasta tener su info real)
+     03 — PABLO XBERG
+     Placeholder content — to be replaced when real bio arrives.
      ============================================================ */
   {
     slug: 'pablo-xberg',
@@ -326,24 +327,29 @@ export const djs: Dj[] = [
     letter: 'C',
     name: 'Pablo Xberg',
     nameLines: ['PABLO', 'XBERG'],
-    photoUrl: '/assets/pablo-xberg.png',
+    photoUrl: '/assets/pablo-xberg-card.jpg',
+    heroPhotoUrl: '/assets/pablo-xberg-hero.jpg',
     role: {
       es: 'Melódico · Progresivo · Amanecer',
       en: 'Melodic · Progressive · Sunrise',
     },
     bio: {
       lead: {
-        es: '"El amanecer se gana."',
-        en: '"The sunrise should be earned."',
+        es: '"El amanecer no se busca, se gana."',
+        en: '"The sunrise isn\'t found, it\'s earned."',
       },
       paragraphs: [
         {
-          es: 'Pablo Xberg arquitecta el ascenso lento. Donde otros buscan el drop, él busca el momento previo: el acorde suspendido, el silencio que la pista sostiene. Sus sets se despliegan como tiempo geológico: nada pasa, hasta que todo ha pasado.',
+          es: 'Pablo Xberg arquitecta el ascenso lento. Donde otros buscan el drop, él busca el momento previo: el acorde suspendido, el silencio que la pista sostiene. Sus sets se despliegan como tiempo geológico — nada pasa, hasta que todo ha pasado.',
           en: 'Pablo Xberg architects the long climb. Where others chase the drop, he chases the moment before it: the suspended chord, the silence the room holds together. His sets unfold like geological time — nothing happens, until everything has happened.',
         },
         {
-          es: '(Bio provisional — pendiente de completar con la info real de Pablo Xberg.)',
-          en: '(Placeholder bio — pending Pablo Xberg\'s real info.)',
+          es: 'Uruguayo de origen, hoy radicado en Berlín, su recorrido cruza el Atlántico y mezcla la calidez clubber rioplatense con el rigor melódico europeo. Esa doble residencia mental — Montevideo y Berlín — se traduce en sets que viajan entre lo introspectivo y lo eufórico sin perder el hilo.',
+          en: 'Uruguayan by origin, Berlin-based today, his journey crosses the Atlantic and blends the warm clubber spirit of the River Plate with the melodic rigour of Europe. That double mental residency — Montevideo and Berlin — translates into sets that move between introspection and euphoria without losing the thread.',
+        },
+        {
+          es: 'Cofundador de Trilogy Crew junto a Terry Mood y Mr Green, aporta al colectivo el lado más melódico del espectro: progresivo, deep house emocional y techno melódico para sets largos de cierre.',
+          en: 'Co-founder of Trilogy Crew alongside Terry Mood and Mr Green, he brings the collective\'s most melodic side to the table: progressive, emotional deep house and melodic techno for long closing sets.',
         },
       ],
     },
@@ -353,14 +359,23 @@ export const djs: Dj[] = [
       activeSince: '2015',
       bpmRange: '120–128',
     },
+    genres: {
+      es: 'Melodic Techno · Progressive · Deep House',
+      en: 'Melodic Techno · Progressive · Deep House',
+    },
     socials: [
       { platform: 'soundcloud', label: 'SoundCloud', handle: '@pabloxberg', url: 'https://soundcloud.com/pabloxberg', cta: ctaListen },
       { platform: 'instagram', label: 'Instagram', handle: '@pabloxberg', url: '#', cta: ctaFollow },
       { platform: 'spotify', label: 'Spotify', handle: 'Pablo Xberg', url: '#', cta: ctaStream },
-      { platform: 'bandcamp', label: 'Bandcamp', handle: 'pabloxberg.bc', url: '#', cta: ctaBuy },
+      { platform: 'bandcamp', label: 'Bandcamp', handle: 'pabloxberg.bandcamp.com', url: '#', cta: ctaBuy },
+    ],
+    clubs: [
+      'Berlín — selección',
+      'Montevideo — selección',
+      '(Lista en construcción)',
     ],
     events: [],
-    presskit: { size: '—', url: '#' },
+    presskit: { size: 'PDF', url: '#' },
     email: 'pablo@trilogycrew.com',
     trackUrls: [
       'https://soundcloud.com/pabloxberg',
@@ -385,8 +400,8 @@ export const crewEvents: DjEvent[] = [
 ];
 
 export const crewStats = {
-  founded: '2010',
-  members: '3+',
+  founded: '2024',
+  members: '03',
   base: 'MVD',
-  events: '1000+',
+  events: '17',
 } as const;

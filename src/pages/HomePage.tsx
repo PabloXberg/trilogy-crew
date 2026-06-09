@@ -24,17 +24,6 @@ export default function HomePage() {
 
         <div className="tagline">
           <div className="left">{t('home.tagline')}</div>
-          <div className="equalizer" aria-hidden="true">
-            {Array.from({ length: 32 }).map((_, i) => (
-              <span
-                key={i}
-                style={{
-                  animationDelay: `${(i % 16) * 0.06}s`,
-                  animationDuration: `${0.7 + (i % 6) * 0.16}s`,
-                }}
-              />
-            ))}
-          </div>
         </div>
       </div>
 

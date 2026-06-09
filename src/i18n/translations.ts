@@ -8,8 +8,8 @@ export const translations = {
   es: {
     'nav.home': 'Inicio',
 
-    'home.meta.year': 'FUNDADO 2011 / MONTEVIDEO',
-    'home.meta.vol': 'Trilogy Djs Crew',
+    'home.meta.year': 'FUNDADO 2024 / MONTEVIDEO',
+    'home.meta.vol': 'VOL. 001',
     'home.meta.tag': 'COLECTIVO DE DJS',
     'home.tagline':
       'Tres identidades sonoras, un solo ritual. Donde la pista no se mide en BPM sino en momentos compartidos.',
