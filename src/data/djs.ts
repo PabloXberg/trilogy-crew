@@ -330,8 +330,8 @@ export const djs: Dj[] = [
     photoUrl: '/assets/pablo-xberg-card.jpg',
     heroPhotoUrl: '/assets/pablo-xberg-hero.jpg',
     role: {
-      es: 'Melódico · Progresivo · Amanecer',
-      en: 'Melodic · Progressive · Sunrise',
+      es: 'Techhouse · Techno · Progresivo',
+      en: 'Techhouse · Techno · Progressive',
     },
     bio: {
       lead: {
@@ -356,8 +356,8 @@ export const djs: Dj[] = [
     meta: {
       based: { es: 'Berlín', en: 'Berlin' },
       origin: { es: 'Uruguay', en: 'Uruguay' },
-      activeSince: '2015',
-      bpmRange: '120–128',
+      activeSince: '2006',
+      bpmRange: '120–130',
     },
     genres: {
       es: 'Melodic Techno · Progressive · Deep House',
@@ -365,7 +365,7 @@ export const djs: Dj[] = [
     },
     socials: [
       { platform: 'soundcloud', label: 'SoundCloud', handle: '@pabloxberg', url: 'https://soundcloud.com/pabloxberg', cta: ctaListen },
-      { platform: 'instagram', label: 'Instagram', handle: '@pabloxberg', url: '#', cta: ctaFollow },
+      { platform: 'instagram', label: 'Instagram', handle: '@pabloxberg', url: 'https://www.instagram.com/pabloxberg/', cta: ctaFollow },
       { platform: 'spotify', label: 'Spotify', handle: 'Pablo Xberg', url: '#', cta: ctaStream },
       { platform: 'bandcamp', label: 'Bandcamp', handle: 'pabloxberg.bandcamp.com', url: '#', cta: ctaBuy },
     ],
