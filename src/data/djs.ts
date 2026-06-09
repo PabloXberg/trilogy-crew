@@ -75,6 +75,13 @@ export interface Dj {
   photoUrl: string;
   /** Optional taller portrait for the DJ page hero. Falls back to photoUrl. */
   heroPhotoUrl?: string;
+  /**
+   * Visual layout of the hero on the DJ page.
+   * 'photo-left'  → photo on the left, info on the right (default)
+   * 'photo-right' → photo on the right, info on the left
+   * Used to introduce subtle variation between DJ pages.
+   */
+  heroLayout?: 'photo-left' | 'photo-right';
   /** Short role / style descriptor */
   role: Localized;
   bio: {
@@ -118,7 +125,6 @@ export interface Dj {
 const ctaListen: Localized = { es: 'ESCUCHAR ↗', en: 'LISTEN ↗' };
 const ctaFollow: Localized = { es: 'SEGUIR ↗', en: 'FOLLOW ↗' };
 const ctaStream: Localized = { es: 'STREAM ↗', en: 'STREAM ↗' };
-const ctaProfile: Localized = { es: 'PERFIL ↗', en: 'PROFILE ↗' };
 const ctaBuy: Localized = { es: 'COMPRAR ↗', en: 'BUY ↗' };
 const ctaMail: Localized = { es: 'ESCRIBIR ↗', en: 'EMAIL ↗' };
 const SAB: Localized = { es: 'SAB', en: 'SAT' };
@@ -233,50 +239,78 @@ export const djs: Dj[] = [
   },
 
   /* ============================================================
-     02 — MR GREEN   (placeholder hasta tener su info real)
+     02 — MR GREEN   (Matías Verde)
+     Info real desde el press kit oficial de Hacemos Ruido.
      ============================================================ */
   {
     slug: 'mr-green',
     order: '02',
     letter: 'B',
     name: 'Mr Green',
+    realName: 'Matías Verde',
     nameLines: ['MR', 'GREEN'],
-    photoUrl: '/assets/mr-green.png',
+    photoUrl: '/assets/mr-green-card.jpg',
+    heroPhotoUrl: '/assets/mr-green-hero.jpg',
+    heroLayout: 'photo-right',
     role: {
-      es: 'Techno · House · Pista cargada',
-      en: 'Techno · House · Loaded floors',
+      es: 'Minimal · House · Tech House',
+      en: 'Minimal · House · Tech House',
     },
     bio: {
       lead: {
-        es: '"Si la pista no suda, no es la pista correcta."',
-        en: '"If the floor isn\'t sweating, it\'s the wrong floor."',
+        es: '"Cada set es una conversación con la pista, nunca un guion."',
+        en: '"Every set is a conversation with the floor, never a script."',
       },
       paragraphs: [
         {
-          es: 'Mr Green se formó en el circuito uruguayo de fiestas clandestinas y rooftops montevideanos. Su sonido es una negociación entre el techno tribal y el house más groove: kicks redondos, percusión cruda y un sentido del timing que viene de muchas noches detrás de los platos.',
-          en: 'Mr Green was forged in Uruguay\'s underground circuit — secret parties and Montevideo rooftops. His sound negotiates between tribal techno and groove-heavy house: rounded kicks, raw percussion and a sense of timing that comes from many nights behind the decks.',
+          es: 'Melómano por naturaleza, Mr Green no prepara sus sets de forma rígida. Prefiere leer la pista en tiempo real, entender lo que el público necesita y llevar el set hacia donde el cuerpo colectivo lo pide. Esa simbiosis entre DJ y pista es su sello: cada sesión es única, viva y profundamente conectada.',
+          en: 'A born music lover, Mr Green doesn\'t lock his sets in advance. He prefers to read the floor in real time, sense what the crowd needs and steer the night wherever the collective body asks for it. That symbiosis between DJ and dancefloor is his trademark: every session is unique, alive and deeply connected.',
         },
         {
-          es: '(Bio provisional — pendiente de completar con la info real de Mr Green.)',
-          en: '(Placeholder bio — pending Mr Green\'s real info.)',
+          es: 'Su vínculo con la música comenzó a los 10 años, grabando en cassette las canciones que le gustaban de la radio, inspirado por su padre. A los 12 ya conectaba equipos de audio en los eventos escolares organizados por su madre. Desde entonces, su gusto musical se expandió sin límites, explorando sonidos modernos sin perder la esencia clubera y rítmica.',
+          en: 'His bond with music began at 10, recording his favourite radio songs onto cassettes, inspired by his father. By 12 he was wiring sound systems at school events organized by his mother. Since then his taste has expanded without limits, exploring modern sounds without losing the clubber, rhythmic essence.',
+        },
+        {
+          es: 'Cofundador de Trilogy Crew y residente desde hace 12 años junto a Terry Mood en Soho Punta del Este, una de las discotecas más emblemáticas del país. Ha tocado en Uruguay, Argentina, Brasil, España y Alemania — incluyendo el Main Floor de Green Valley (Camboriú), reconocida por DJ Mag como la segunda mejor discoteca del mundo en 2025.',
+          en: 'Co-founder of Trilogy Crew and a 12-year resident alongside Terry Mood at Soho Punta del Este, one of the country\'s most iconic clubs. He has played in Uruguay, Argentina, Brazil, Spain and Germany — including the Main Floor of Green Valley (Camboriú), named the world\'s #2 club by DJ Mag in 2025.',
         },
       ],
     },
     meta: {
       based: { es: 'Montevideo', en: 'Montevideo' },
       origin: { es: 'Uruguay', en: 'Uruguay' },
-      activeSince: '2018',
-      bpmRange: '128–138',
+      activeSince: '2010',
+      bpmRange: '122–128',
+    },
+    genres: {
+      es: 'Minimal · House · Deep Tech · Tech House',
+      en: 'Minimal · House · Deep Tech · Tech House',
     },
     socials: [
       { platform: 'soundcloud', label: 'SoundCloud', handle: '@mrgreen_uy', url: 'https://soundcloud.com/mrgreen_uy', cta: ctaListen },
       { platform: 'instagram', label: 'Instagram', handle: '@mrgreen.uy', url: '#', cta: ctaFollow },
       { platform: 'spotify', label: 'Spotify', handle: 'Mr Green', url: '#', cta: ctaStream },
-      { platform: 'facebook', label: 'Facebook', handle: '/mrgreen.uy', url: '#', cta: ctaProfile },
+      { platform: 'facebook', label: 'Bookings', handle: 'hacemosruido.uy', url: 'mailto:hola@hacemosruido.uy', cta: ctaMail },
+    ],
+    gallery: [
+      '/assets/mr-green-1.jpg',
+      '/assets/mr-green-2.jpg',
+      '/assets/mr-green-3.jpg',
+      '/assets/mr-green-4.jpg',
+    ],
+    clubs: [
+      'Soho Punta del Este',
+      'Green Valley (Camboriú, BR)',
+      'Kalú',
+      'DreamHouse',
+      'BeatInside',
+      'CROP',
+      'The Sound of Roomba',
+      'Aftería',
     ],
     events: [],
-    presskit: { size: '—', url: '#' },
-    email: 'mrgreen@trilogycrew.com',
+    presskit: { size: 'PDF', url: '/assets/mr-green-bio.pdf' },
+    email: 'hola@hacemosruido.uy',
     trackUrls: [
       'https://soundcloud.com/mrgreen_uy',
       'https://soundcloud.com/mrgreen_uy/tracks',
@@ -316,8 +350,8 @@ export const djs: Dj[] = [
     meta: {
       based: { es: 'Berlín', en: 'Berlin' },
       origin: { es: 'Uruguay', en: 'Uruguay' },
-      activeSince: '2003',
-      bpmRange: '120–130',
+      activeSince: '2015',
+      bpmRange: '120–128',
     },
     socials: [
       { platform: 'soundcloud', label: 'SoundCloud', handle: '@pabloxberg', url: 'https://soundcloud.com/pabloxberg', cta: ctaListen },
@@ -347,12 +381,12 @@ export const crewEvents: DjEvent[] = [
   { date: '14.06', weekday: SAB, venue: 'Phonotheque', venueDetail: { es: 'Ciudad Vieja, MVD', en: 'Ciudad Vieja, MVD' }, lineup: { es: 'Los tres · 23:00 → late', en: 'All three · 23:00 → late' }, url: '#' },
   { date: '28.06', weekday: SAB, venue: 'Bahrein', venueDetail: { es: 'Punta Carretas, MVD', en: 'Punta Carretas, MVD' }, lineup: { es: 'Terry Mood B2B Mr Green', en: 'Terry Mood B2B Mr Green' }, url: '#' },
   { date: '12.07', weekday: SAB, venue: 'La Trastienda', venueDetail: { es: 'Centro, MVD', en: 'Centro, MVD' }, lineup: { es: 'Pablo Xberg · set de cierre', en: 'Pablo Xberg · closing set' }, url: '#' },
-  { date: '02.08', weekday: VIE, venue: 'SOHO', venueDetail: { es: 'Punta del Este', en: 'Punta del Este' }, lineup: { es: 'Trilogy x Costa Festival', en: 'Trilogy x Costa Festival' }, url: '#' },
+  { date: '02.08', weekday: VIE, venue: 'Sala Zitarrosa', venueDetail: { es: 'Punta del Este', en: 'Punta del Este' }, lineup: { es: 'Trilogy x Costa Festival', en: 'Trilogy x Costa Festival' }, url: '#' },
 ];
 
 export const crewStats = {
-  founded: '2011',
+  founded: '2024',
   members: '03',
   base: 'MVD',
-  events: '1000+', // No es un número real, solo un hito simbólico para mostrar en la sección de stats del home.
+  events: '17',
 } as const;

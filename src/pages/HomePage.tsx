@@ -24,7 +24,7 @@ export default function HomePage() {
 
         <div className="tagline">
           <div className="left">{t('home.tagline')}</div>
-          {/* <div className="equalizer" aria-hidden="true">
+          <div className="equalizer" aria-hidden="true">
             {Array.from({ length: 32 }).map((_, i) => (
               <span
                 key={i}
@@ -34,7 +34,7 @@ export default function HomePage() {
                 }}
               />
             ))}
-          </div> */}
+          </div>
         </div>
       </div>
 

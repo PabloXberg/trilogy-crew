@@ -21,7 +21,7 @@ export default function DjPage() {
   return (
     <section className="page">
       {/* Hero */}
-      <div className="dj-hero">
+      <div className={`dj-hero ${dj.heroLayout === 'photo-right' ? 'photo-right' : ''}`}>
         <div className="photo-lg">
           <div className="tag">/// MEMBER {dj.order}</div>
           <img src={dj.heroPhotoUrl ?? dj.photoUrl} alt={dj.name} />

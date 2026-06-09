@@ -590,6 +590,17 @@ footer.site-footer .copyright {
   align-items: center;
   min-height: calc(100vh - 62px);
 }
+/* Variant: photo on the right, info on the left.
+   Achieved by swapping grid column ratios + visually re-ordering children. */
+.dj-hero.photo-right {
+  grid-template-columns: 1.2fr 1fr;
+}
+.dj-hero.photo-right .photo-lg {
+  order: 2;
+}
+.dj-hero.photo-right .info {
+  order: 1;
+}
 .dj-hero .photo-lg {
   width: 100%;
   aspect-ratio: 4/5;
