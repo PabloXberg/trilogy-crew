@@ -18,8 +18,15 @@ export default function DjPage() {
   const dj = slug ? getDjBySlug(slug) : undefined;
   if (!dj) return <Navigate to="/" replace />;
 
+  // Set the DJ's accent color as a CSS variable scoped to this page.
+  const pageStyle = dj.accentColor
+    ? ({ '--dj-accent': dj.accentColor } as React.CSSProperties)
+    : undefined;
+
+  const fullName = `${dj.nameLines[0]} ${dj.nameLines[1]}`;
+
   return (
-    <section className="page">
+    <section className="page dj-page" style={pageStyle}>
       {/* Hero */}
       <div className={`dj-hero ${dj.heroLayout === 'photo-right' ? 'photo-right' : ''}`}>
         <div className="photo-lg">
@@ -39,18 +46,22 @@ export default function DjPage() {
             {t('dj.bc')}
             {dj.order}
           </div>
-          <h1>
-            {dj.nameLines[0]}
-            <br />
-            {dj.nameLines[1]}
-          </h1>
+
+          {/* Name block with Instagram-style echo */}
+          <div className="name-block">
+            <h1 className="name-main">{fullName}</h1>
+            <div className="name-echo" aria-hidden="true">
+              <span>{fullName}</span>
+              <span>{fullName}</span>
+              <span>{fullName}</span>
+            </div>
+            {dj.realName && (
+              <div className="real-name">({dj.realName})</div>
+            )}
+          </div>
+
           <div className="role">{pick(dj.role)}</div>
           <div className="quick-meta">
-            {dj.realName && (
-              <div>
-                {t('dj.meta.realname')} <b>{dj.realName}</b>
-              </div>
-            )}
             <div>
               {t('dj.meta.based')} <b>{pick(dj.meta.based)}</b>
             </div>
@@ -78,6 +89,12 @@ export default function DjPage() {
           {dj.bio.paragraphs.map((p, i) => (
             <p key={i}>{pick(p)}</p>
           ))}
+          {dj.tagline && (
+            <div className="tagline-strip">
+              <span className="tagline-bar" aria-hidden="true" />
+              <span className="tagline-text">{pick(dj.tagline)}</span>
+            </div>
+          )}
         </div>
       </div>
 

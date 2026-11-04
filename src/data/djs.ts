@@ -84,6 +84,17 @@ export interface Dj {
   heroLayout?: 'photo-left' | 'photo-right';
   /** Short role / style descriptor */
   role: Localized;
+  /**
+   * Accent color for this DJ (hex). Used for the outline-echo name effect on the
+   * hero and small accent touches. Each DJ has their own — matches Instagram feed.
+   * Falls back to the global --accent if not set.
+   */
+  accentColor?: string;
+  /**
+   * Short standout line shown below the bio (e.g. "SETS SIN GUION, PURA PISTA.").
+   * This is the equivalent of the bold tagline at the bottom of the Instagram feeds.
+   */
+  tagline?: Localized;
   bio: {
     /** Big lead quote. */
     lead: Localized;
@@ -148,6 +159,11 @@ export const djs: Dj[] = [
       es: 'House · Deep · Tech House',
       en: 'House · Deep · Tech House',
     },
+    accentColor: '#ffffff',
+    tagline: {
+      es: 'MÁS QUE MÚSICA, UN LUGAR EN COMÚN.',
+      en: 'MORE THAN MUSIC, A COMMON GROUND.',
+    },
     bio: {
       lead: {
         es: '"Un DJ que no solo hace bailar, conecta con el alma de la pista."',
@@ -155,8 +171,12 @@ export const djs: Dj[] = [
       },
       paragraphs: [
         {
-          es: 'Terry Mood es un arquitecto sonoro que entiende la música como un espacio de resguardo, conexión y comunión. Su propuesta nace de la cultura clubbing como lugar de encuentro, donde cada set es una historia cargada de energía, groove y estética particular. Con un enfoque siempre alejado del mainstream, busca provocar una experiencia sonora auténtica, vibrante y emocional.',
-          en: 'Terry Mood is a sonic architect who understands music as a space of refuge, connection and communion. His vision is born from club culture as a meeting place, where every set is a story loaded with energy, groove and its own particular aesthetic. With an approach always far from the mainstream, he seeks to provoke an authentic, vibrant and emotional sonic experience.',
+          es: 'Terry Mood es un arquitecto sonoro que concibe la música como un espacio de refugio, conexión y comunión. Inspirado en la cultura clubbing como punto de encuentro, construye sets que narran historias a través de la energía, el groove y una identidad estética propia.',
+          en: 'Terry Mood is a sonic architect who conceives music as a space of refuge, connection and communion. Inspired by club culture as a meeting point, he builds sets that tell stories through energy, groove and an aesthetic identity of his own.',
+        },
+        {
+          es: 'Su sonido combina bajos potentes, ritmos envolventes y una esencia retro reinterpretada desde una mirada contemporánea. Lejos de las fórmulas mainstream y lo predecible, apuesta por un house refinado, elegante y vibrante, donde la sorpresa convive con la esencia de la pista. Su propósito va más allá de hacer bailar: busca generar una conexión auténtica y emocional con el público.',
+          en: 'His sound combines powerful bass, immersive rhythms and a retro essence reinterpreted through a contemporary lens. Far from mainstream formulas and the predictable, he bets on a refined, elegant and vibrant house, where surprise coexists with the essence of the dancefloor. His purpose goes beyond making people dance: he seeks to generate an authentic, emotional connection with the crowd.',
         },
         {
           es: 'Comenzó como DJ en 2003, a los 16 años, explorando los primeros softwares de mezcla y evolucionando hacia bandejas dobles y vinilos. Sus primeras fiestas las organizaba él mismo junto a Pablo Xberg. En 2008 obtuvo su primera residencia en Cain Dance y desde 2011 sostiene una residencia de 13 años en Soho Punta del Este.',
@@ -256,6 +276,11 @@ export const djs: Dj[] = [
       es: 'Minimal · House · Tech House',
       en: 'Minimal · House · Tech House',
     },
+    accentColor: '#c7ff3a',
+    tagline: {
+      es: 'SETS SIN GUION, PURA PISTA.',
+      en: 'UNSCRIPTED SETS, PURE DANCEFLOOR.',
+    },
     bio: {
       lead: {
         es: '"Cada set es una conversación con la pista, nunca un guion."',
@@ -263,16 +288,16 @@ export const djs: Dj[] = [
       },
       paragraphs: [
         {
-          es: 'Melómano por naturaleza, Mr Green no prepara sus sets de forma rígida. Prefiere leer la pista en tiempo real, entender lo que el público necesita y llevar el set hacia donde el cuerpo colectivo lo pide. Esa simbiosis entre DJ y pista es su sello: cada sesión es única, viva y profundamente conectada.',
-          en: 'A born music lover, Mr Green doesn\'t lock his sets in advance. He prefers to read the floor in real time, sense what the crowd needs and steer the night wherever the collective body asks for it. That symbiosis between DJ and dancefloor is his trademark: every session is unique, alive and deeply connected.',
+          es: 'Mr.Green (Matías Verde) es un DJ y productor uruguayo con más de 15 años de trayectoria en la escena electrónica. Su identidad sonora transita entre el minimal, house, deep tech y tech house, combinando un groove envolvente, energía y una conexión constante con la pista.',
+          en: 'Mr.Green (Matías Verde) is a Uruguayan DJ and producer with over 15 years in the electronic scene. His sonic identity moves between minimal, house, deep tech and tech house, combining an immersive groove, energy and a constant connection with the floor.',
         },
         {
-          es: 'Su vínculo con la música comenzó a los 10 años, grabando en cassette las canciones que le gustaban de la radio, inspirado por su padre. A los 12 ya conectaba equipos de audio en los eventos escolares organizados por su madre. Desde entonces, su gusto musical se expandió sin límites, explorando sonidos modernos sin perder la esencia clubera y rítmica.',
-          en: 'His bond with music began at 10, recording his favourite radio songs onto cassettes, inspired by his father. By 12 he was wiring sound systems at school events organized by his mother. Since then his taste has expanded without limits, exploring modern sounds without losing the clubber, rhythmic essence.',
+          es: 'Melómano por naturaleza, no prepara sus sets de forma rígida: prefiere leer la pista en tiempo real y llevarla hacia donde el cuerpo colectivo lo pide. Esa simbiosis entre DJ y pista es su sello — cada sesión es única, viva y profundamente conectada.',
+          en: 'A born music lover, he doesn\'t lock his sets in advance: he reads the floor in real time and steers it wherever the collective body asks. That symbiosis between DJ and dancefloor is his trademark — every session is unique, alive and deeply connected.',
         },
         {
-          es: 'Cofundador de Trilogy Crew y residente desde hace 12 años junto a Terry Mood en Soho Punta del Este, una de las discotecas más emblemáticas del país. Ha tocado en Uruguay, Argentina, Brasil, España y Alemania — incluyendo el Main Floor de Green Valley (Camboriú), reconocida por DJ Mag como la segunda mejor discoteca del mundo en 2025.',
-          en: 'Co-founder of Trilogy Crew and a 12-year resident alongside Terry Mood at Soho Punta del Este, one of the country\'s most iconic clubs. He has played in Uruguay, Argentina, Brazil, Spain and Germany — including the Main Floor of Green Valley (Camboriú), named the world\'s #2 club by DJ Mag in 2025.',
+          es: 'Cofundador de Trilogy Crew y residente de Soho Punta del Este desde hace 15 años, ha llevado su música a escenarios de Uruguay, Argentina y Brasil, destacándose su presentación en el Main Floor de Green Valley (Brasil), uno de los clubes más reconocidos del mundo según el ranking de DJ Mag.',
+          en: 'Co-founder of Trilogy Crew and a 15-year resident at Soho Punta del Este, he has played venues across Uruguay, Argentina and Brazil, including a standout appearance on the Main Floor of Green Valley (Brazil), one of the world\'s most acclaimed clubs according to DJ Mag\'s ranking.',
         },
       ],
     },
@@ -330,8 +355,13 @@ export const djs: Dj[] = [
     photoUrl: '/assets/pablo-xberg-card.jpg',
     heroPhotoUrl: '/assets/pablo-xberg-hero.jpg',
     role: {
-      es: 'Techhouse · Techno · Progresivo',
-      en: 'Techhouse · Techno · Progressive',
+      es: 'Melódico · Progresivo · Amanecer',
+      en: 'Melodic · Progressive · Sunrise',
+    },
+    accentColor: '#ff4d8d',
+    tagline: {
+      es: 'EL VIAJE LARGO, EL CIERRE JUSTO.',
+      en: 'THE LONG JOURNEY, THE RIGHT CLOSING.',
     },
     bio: {
       lead: {
@@ -356,8 +386,8 @@ export const djs: Dj[] = [
     meta: {
       based: { es: 'Berlín', en: 'Berlin' },
       origin: { es: 'Uruguay', en: 'Uruguay' },
-      activeSince: '2006',
-      bpmRange: '120–130',
+      activeSince: '2015',
+      bpmRange: '120–128',
     },
     genres: {
       es: 'Melodic Techno · Progressive · Deep House',
@@ -365,7 +395,7 @@ export const djs: Dj[] = [
     },
     socials: [
       { platform: 'soundcloud', label: 'SoundCloud', handle: '@pabloxberg', url: 'https://soundcloud.com/pabloxberg', cta: ctaListen },
-      { platform: 'instagram', label: 'Instagram', handle: '@pabloxberg', url: 'https://www.instagram.com/pabloxberg/', cta: ctaFollow },
+      { platform: 'instagram', label: 'Instagram', handle: '@pabloxberg', url: '#', cta: ctaFollow },
       { platform: 'spotify', label: 'Spotify', handle: 'Pablo Xberg', url: '#', cta: ctaStream },
       { platform: 'bandcamp', label: 'Bandcamp', handle: 'pabloxberg.bandcamp.com', url: '#', cta: ctaBuy },
     ],
@@ -382,6 +412,165 @@ export const djs: Dj[] = [
       'https://soundcloud.com/pabloxberg/tracks',
     ],
   },
+
+  /* ============================================================
+     04 — ANTO BRAVO  (Antonella)
+     Info real desde el feed oficial de Trilogy Crew.
+     ============================================================ */
+  {
+    slug: 'anto-bravo',
+    order: '04',
+    letter: 'D',
+    name: 'Anto Bravo',
+    realName: 'Antonella',
+    nameLines: ['ANTO', 'BRAVO'],
+    photoUrl: '/assets/anto-bravo-card.jpg',
+    heroPhotoUrl: '/assets/anto-bravo-hero.jpg',
+    heroLayout: 'photo-right',
+    role: {
+      es: 'Tech House · Groove · Energía',
+      en: 'Tech House · Groove · Energy',
+    },
+    accentColor: '#1fc7ff',
+    tagline: {
+      es: 'ELEGANCIA, GROOVE Y ENERGÍA SIN FRONTERAS.',
+      en: 'ELEGANCE, GROOVE AND ENERGY WITHOUT BORDERS.',
+    },
+    bio: {
+      lead: {
+        es: '"Una fuerza emergente en la escena electrónica."',
+        en: '"An emerging force in the electronic scene."',
+      },
+      paragraphs: [
+        {
+          es: 'Antonella es una fuerza emergente en la escena electrónica. Su sonido se define por la fusión de elegancia, profundidad rítmica groovera y exótica, y una energía vibrante que ha cautivado las pistas, tanto en Latinoamérica como en Europa.',
+          en: 'Antonella is an emerging force in the electronic scene. Her sound is defined by the fusion of elegance, groovy and exotic rhythmic depth, and a vibrant energy that has captivated dancefloors across Latin America and Europe.',
+        },
+        {
+          es: 'Con cada presentación, Anto Bravo demuestra por qué su propuesta trasciende fronteras: una identidad sonora propia que combina lo refinado con el pulso implacable de la pista.',
+          en: 'With every performance, Anto Bravo shows why her proposal crosses borders: a sonic identity of her own that combines the refined with the relentless pulse of the dancefloor.',
+        },
+      ],
+    },
+    meta: {
+      based: { es: 'Uruguay', en: 'Uruguay' },
+      origin: { es: 'Uruguay', en: 'Uruguay' },
+      activeSince: '—',
+      bpmRange: '124–128',
+    },
+    genres: {
+      es: 'Tech House · House · Groove',
+      en: 'Tech House · House · Groove',
+    },
+    socials: [
+      { platform: 'instagram', label: 'Instagram', handle: '@antobravo', url: '#', cta: ctaFollow },
+      { platform: 'soundcloud', label: 'SoundCloud', handle: '@antobravo', url: '#', cta: ctaListen },
+      { platform: 'spotify', label: 'Spotify', handle: 'Anto Bravo', url: '#', cta: ctaStream },
+      { platform: 'facebook', label: 'Bookings', handle: 'Trilogy Crew', url: 'mailto:bookings@trilogycrew.com', cta: ctaMail },
+    ],
+    gallery: ['/assets/anto-bravo-1.jpg'],
+    events: [],
+    presskit: { size: '—', url: '#' },
+    email: 'bookings@trilogycrew.com',
+    trackUrls: [
+      'https://soundcloud.com/antobravo',
+      'https://soundcloud.com/antobravo/tracks',
+    ],
+  },
+
+  /* ============================================================
+     05 — DJ #5  (placeholder — info pendiente)
+     ============================================================ */
+  {
+    slug: 'dj-05',
+    order: '05',
+    letter: 'E',
+    name: 'Próximo DJ',
+    nameLines: ['PRÓXIMO', 'DJ'],
+    photoUrl: '/assets/placeholder-card.jpg',
+    role: {
+      es: 'Info próximamente',
+      en: 'Info coming soon',
+    },
+    accentColor: '#9b7dff',
+    tagline: {
+      es: 'MUY PRONTO.',
+      en: 'COMING SOON.',
+    },
+    bio: {
+      lead: {
+        es: '"Nuevo miembro del colectivo — presentación próximamente."',
+        en: '"New member of the collective — introduction coming soon."',
+      },
+      paragraphs: [
+        {
+          es: 'Este DJ se incorpora al colectivo. La información completa (biografía, estilo, fotos y redes) se publicará en los próximos días.',
+          en: 'This DJ is joining the collective. Full information (bio, style, photos and links) will be published in the coming days.',
+        },
+      ],
+    },
+    meta: {
+      based: { es: 'TBA', en: 'TBA' },
+      origin: { es: 'TBA', en: 'TBA' },
+      activeSince: '—',
+      bpmRange: '—',
+    },
+    socials: [],
+    events: [],
+    presskit: { size: '—', url: '#' },
+    email: 'bookings@trilogycrew.com',
+    trackUrls: [
+      'https://soundcloud.com/trilogy-crew',
+      'https://soundcloud.com/trilogy-crew/tracks',
+    ],
+  },
+
+  /* ============================================================
+     06 — DJ #6  (placeholder — info pendiente)
+     ============================================================ */
+  {
+    slug: 'dj-06',
+    order: '06',
+    letter: 'F',
+    name: 'Próximo DJ',
+    nameLines: ['PRÓXIMO', 'DJ'],
+    photoUrl: '/assets/placeholder-card.jpg',
+    role: {
+      es: 'Info próximamente',
+      en: 'Info coming soon',
+    },
+    accentColor: '#ffb84d',
+    tagline: {
+      es: 'MUY PRONTO.',
+      en: 'COMING SOON.',
+    },
+    bio: {
+      lead: {
+        es: '"Nuevo miembro del colectivo — presentación próximamente."',
+        en: '"New member of the collective — introduction coming soon."',
+      },
+      paragraphs: [
+        {
+          es: 'Este DJ se incorpora al colectivo. La información completa (biografía, estilo, fotos y redes) se publicará en los próximos días.',
+          en: 'This DJ is joining the collective. Full information (bio, style, photos and links) will be published in the coming days.',
+        },
+      ],
+    },
+    meta: {
+      based: { es: 'TBA', en: 'TBA' },
+      origin: { es: 'TBA', en: 'TBA' },
+      activeSince: '—',
+      bpmRange: '—',
+    },
+    socials: [],
+    events: [],
+    presskit: { size: '—', url: '#' },
+    email: 'bookings@trilogycrew.com',
+    trackUrls: [
+      'https://soundcloud.com/trilogy-crew',
+      'https://soundcloud.com/trilogy-crew/tracks',
+    ],
+  },
 ];
 
 export function getDjBySlug(slug: string): Dj | undefined {
@@ -396,12 +585,12 @@ export const crewEvents: DjEvent[] = [
   { date: '14.06', weekday: SAB, venue: 'Phonotheque', venueDetail: { es: 'Ciudad Vieja, MVD', en: 'Ciudad Vieja, MVD' }, lineup: { es: 'Los tres · 23:00 → late', en: 'All three · 23:00 → late' }, url: '#' },
   { date: '28.06', weekday: SAB, venue: 'Bahrein', venueDetail: { es: 'Punta Carretas, MVD', en: 'Punta Carretas, MVD' }, lineup: { es: 'Terry Mood B2B Mr Green', en: 'Terry Mood B2B Mr Green' }, url: '#' },
   { date: '12.07', weekday: SAB, venue: 'La Trastienda', venueDetail: { es: 'Centro, MVD', en: 'Centro, MVD' }, lineup: { es: 'Pablo Xberg · set de cierre', en: 'Pablo Xberg · closing set' }, url: '#' },
-  { date: '02.08', weekday: VIE, venue: 'Soho', venueDetail: { es: 'Punta del Este', en: 'Punta del Este' }, lineup: { es: 'Trilogy x Costa Festival', en: 'Trilogy x Costa Festival' }, url: '#' },
+  { date: '02.08', weekday: VIE, venue: 'Sala Zitarrosa', venueDetail: { es: 'Punta del Este', en: 'Punta del Este' }, lineup: { es: 'Trilogy x Costa Festival', en: 'Trilogy x Costa Festival' }, url: '#' },
 ];
 
 export const crewStats = {
-  founded: '2010',
-  members: '3+',
+  founded: '2024',
+  members: '06',
   base: 'MVD',
-  events: '1000+',
+  events: '24',
 } as const;

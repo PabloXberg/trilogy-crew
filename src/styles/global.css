@@ -296,6 +296,7 @@ main {
 }
 .dj-card {
   border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
   padding: 32px 28px 36px;
   cursor: pointer;
   position: relative;
@@ -304,8 +305,13 @@ main {
   display: flex;
   flex-direction: column;
 }
-.dj-card:last-child {
+/* 3-column grid: remove right border on every 3rd card, and bottom border on last row */
+.dj-card:nth-child(3n) {
   border-right: none;
+}
+.dj-card:nth-last-child(-n + 3):nth-child(3n + 1),
+.dj-card:nth-last-child(-n + 3):nth-child(3n + 1) ~ .dj-card {
+  border-bottom: none;
 }
 .dj-card:hover {
   background: var(--bg-2);
@@ -315,6 +321,10 @@ main {
   font-size: 11px;
   color: var(--text-dim);
   letter-spacing: 0.2em;
+  transition: color 0.3s;
+}
+.dj-card:hover .num {
+  color: var(--dj-accent, var(--accent));
 }
 .dj-card .photo {
   margin: 24px 0 28px;
@@ -362,7 +372,7 @@ main {
   top: 32px;
   right: 28px;
   font-size: 18px;
-  color: var(--accent);
+  color: var(--dj-accent, var(--accent));
   transition: transform 0.3s;
 }
 .dj-card:hover .arrow {
@@ -608,20 +618,65 @@ footer.site-footer .copyright {
 .dj-hero .info .breadcrumb:hover {
   color: var(--accent-2);
 }
-.dj-hero .info h1 {
+/* Name block: main name in solid accent + 3 outline echoes behind */
+.dj-hero .info .name-block {
+  position: relative;
+  margin-bottom: 20px;
+}
+.dj-hero .info .name-main {
   font-family: var(--font-display);
-  font-size: clamp(72px, 11vw, 170px);
-  line-height: 0.85;
-  letter-spacing: -0.005em;
+  font-size: clamp(56px, 8.5vw, 112px);
+  line-height: 0.95;
+  letter-spacing: 0.005em;
   text-transform: uppercase;
+  color: var(--dj-accent, var(--text));
+  position: relative;
+  z-index: 2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
+}
+.dj-hero .info .name-echo {
+  position: absolute;
+  top: 0.9em;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.dj-hero .info .name-echo span {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 8.5vw, 112px);
+  line-height: 0.95;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--dj-accent, var(--text-dimmer));
+  opacity: 0.22;
+  white-space: nowrap;
+}
+.dj-hero .info .name-echo span:nth-child(2) { opacity: 0.14; }
+.dj-hero .info .name-echo span:nth-child(3) { opacity: 0.07; }
+.dj-hero .info .real-name {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  margin-top: 16px;
+  position: relative;
+  z-index: 2;
 }
 .dj-hero .info .role {
   font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.22em;
-  color: var(--accent);
+  color: var(--dj-accent, var(--accent));
   text-transform: uppercase;
-  margin-top: 28px;
+  margin-top: 20px;
 }
 .dj-hero .info .quick-meta {
   margin-top: 36px;
@@ -680,6 +735,50 @@ footer.site-footer .copyright {
   line-height: 1.8;
   margin-bottom: 18px;
   color: var(--text);
+}
+/* Instagram-style tagline strip below the bio paragraphs */
+.dj-bio .text .tagline-strip {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+.dj-bio .text .tagline-strip .tagline-bar {
+  display: inline-block;
+  width: 40px;
+  height: 2px;
+  background: var(--dj-accent, var(--accent));
+  flex-shrink: 0;
+}
+.dj-bio .text .tagline-strip .tagline-text {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--dj-accent, var(--text));
+  font-weight: 500;
+}
+
+/* Accent-color aware tweaks for scoped pages */
+.dj-page .dj-hero .photo-lg .tag {
+  color: var(--dj-accent, var(--text));
+}
+.dj-page .social-link .go {
+  color: var(--dj-accent, var(--accent));
+}
+.dj-page .presskit-box .btn {
+  border-color: var(--dj-accent, var(--accent));
+  color: var(--dj-accent, var(--accent));
+}
+.dj-page .presskit-box .btn:hover {
+  background: var(--dj-accent, var(--accent));
+  color: var(--bg);
+}
+.dj-page .gallery-item:hover,
+.dj-page .gallery-item.has-photo:hover {
+  border-color: var(--dj-accent, var(--accent));
 }
 
 .dj-section {
@@ -1144,6 +1243,20 @@ footer.site-footer .copyright {
   .dj-hero.photo-right .info {
     order: unset;
   }
+  /* Mobile: name scales down, keep echoes but tighter.
+     If a name is very long (eg "PABLO XBERG") the echo may clip — that's fine,
+     it reads as texture. */
+  .dj-hero .info .name-main,
+  .dj-hero .info .name-echo span {
+    font-size: 48px;
+    line-height: 0.95;
+  }
+  .dj-hero .info .name-echo {
+    top: 0.85em;
+  }
+  .dj-hero .info .real-name {
+    font-size: 12px;
+  }
   .dj-bio {
     grid-template-columns: 1fr;
     padding: 56px 18px;
@@ -1151,6 +1264,15 @@ footer.site-footer .copyright {
   }
   .dj-bio .text .lead {
     font-size: 28px;
+  }
+  .dj-bio .text .tagline-strip {
+    gap: 12px;
+    margin-top: 28px;
+    padding-top: 22px;
+  }
+  .dj-bio .text .tagline-strip .tagline-text {
+    font-size: 11px;
+    letter-spacing: 0.22em;
   }
   .dj-section,
   .presskit-box {

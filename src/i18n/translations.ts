@@ -12,8 +12,8 @@ export const translations = {
     'home.meta.vol': 'VOL. 001',
     'home.meta.tag': 'COLECTIVO DE DJS',
     'home.tagline':
-      'Tres identidades sonoras, un solo ritual. Donde la pista no se mide en BPM sino en momentos compartidos.',
-    'home.right.l1': 'TRES DJS',
+      'Identidades sonoras distintas, un solo ritual. Donde la pista no se mide en BPM sino en momentos compartidos.',
+    'home.right.l1': 'UN COLECTIVO',
     'home.right.l2': 'UNA PISTA',
     'home.right.l3': 'SIN CONCESIONES',
 
@@ -86,8 +86,8 @@ export const translations = {
     'home.meta.vol': 'VOL. 001',
     'home.meta.tag': 'DJ COLLECTIVE',
     'home.tagline':
-      "Three sonic identities, one shared ritual. Where the floor isn't measured in BPM but in shared moments.",
-    'home.right.l1': 'THREE DJS',
+      "Distinct sonic identities, one shared ritual. Where the floor isn't measured in BPM but in shared moments.",
+    'home.right.l1': 'ONE COLLECTIVE',
     'home.right.l2': 'ONE FLOOR',
     'home.right.l3': 'NO COMPROMISE',
 

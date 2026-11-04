@@ -11,9 +11,14 @@ export default function DjCard({ dj }: Props) {
   const navigate = useNavigate();
   const go = () => navigate(`/dj/${dj.slug}`);
 
+  const style = dj.accentColor
+    ? ({ '--dj-accent': dj.accentColor } as React.CSSProperties)
+    : undefined;
+
   return (
     <div
       className="dj-card"
+      style={style}
       role="link"
       tabIndex={0}
       onClick={go}
