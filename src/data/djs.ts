@@ -69,8 +69,8 @@ export interface Dj {
   name: string;
   /** Real name (optional, shown in bio meta) */
   realName?: string;
-  /** Display name split into two lines for the hero h1 */
-  nameLines: [string, string];
+  /** Display name split into one or two lines for the hero h1 */
+  nameLines: [string] | [string, string];
   /** Square portrait for the home card (relative to /public) */
   photoUrl: string;
   /** Optional taller portrait for the DJ page hero. Falls back to photoUrl. */
@@ -358,40 +358,40 @@ export const djs: Dj[] = [
       es: 'Melódico · Progresivo · Amanecer',
       en: 'Melodic · Progressive · Sunrise',
     },
-    accentColor: '#ff4d8d',
+    accentColor: '#ff5a1f',
     tagline: {
-      es: 'EL VIAJE LARGO, EL CIERRE JUSTO.',
-      en: 'THE LONG JOURNEY, THE RIGHT CLOSING.',
+      es: 'EN LA LÍNEA ENTRE EL TECH HOUSE Y EL TECHNO.',
+      en: 'ON THE LINE BETWEEN TECH HOUSE AND TECHNO.',
     },
     bio: {
       lead: {
-        es: '"El amanecer no se busca, se gana."',
-        en: '"The sunrise isn\'t found, it\'s earned."',
+        es: '"El sonido más cercano al techno dentro de Trilogy — ideal para los cierres potentes."',
+        en: '"The sound closest to techno inside Trilogy — made for powerful closings."',
       },
       paragraphs: [
         {
-          es: 'Pablo Xberg arquitecta el ascenso lento. Donde otros buscan el drop, él busca el momento previo: el acorde suspendido, el silencio que la pista sostiene. Sus sets se despliegan como tiempo geológico — nada pasa, hasta que todo ha pasado.',
-          en: 'Pablo Xberg architects the long climb. Where others chase the drop, he chases the moment before it: the suspended chord, the silence the room holds together. His sets unfold like geological time — nothing happens, until everything has happened.',
+          es: 'Pablo Xberg (Pablo Morena) comenzó su camino detrás de las bandejas hace casi 20 años, junto a Terry Mood, en los primeros circuitos clandestinos de Montevideo. Desde hace 17 años vive en Berlín, donde absorbió la crudeza y la precisión de la escena techno más influyente del mundo.',
+          en: 'Pablo Xberg (Pablo Morena) started behind the decks almost 20 years ago alongside Terry Mood, in the first underground circuits of Montevideo. He has lived in Berlin for the last 17 years, absorbing the rawness and precision of the world\'s most influential techno scene.',
         },
         {
-          es: 'Uruguayo de origen, hoy radicado en Berlín, su recorrido cruza el Atlántico y mezcla la calidez clubber rioplatense con el rigor melódico europeo. Esa doble residencia mental — Montevideo y Berlín — se traduce en sets que viajan entre lo introspectivo y lo eufórico sin perder el hilo.',
-          en: 'Uruguayan by origin, Berlin-based today, his journey crosses the Atlantic and blends the warm clubber spirit of the River Plate with the melodic rigour of Europe. That double mental residency — Montevideo and Berlin — translates into sets that move between introspection and euphoria without losing the thread.',
+          es: 'Dentro de Trilogy Crew aporta el lado más duro del espectro: su sonido camina sobre la línea entre el tech house y el techno, con kicks envolventes, percusión seca y un sentido del timing afilado tras años de residencias y afters berlineses. Su cabina es terreno natural para los cierres potentes, esos sets donde la pista ya está lista para que no vuelva a bajar.',
+          en: 'Within Trilogy Crew, he brings the hardest side of the spectrum: his sound walks the line between tech house and techno, with wrapping kicks, dry percussion and a sense of timing sharpened by years of Berlin residencies and after-hours. His booth is the natural ground for powerful closings — the kind of sets where the floor is ready never to come back down.',
         },
         {
-          es: 'Cofundador de Trilogy Crew junto a Terry Mood y Mr Green, aporta al colectivo el lado más melódico del espectro: progresivo, deep house emocional y techno melódico para sets largos de cierre.',
-          en: 'Co-founder of Trilogy Crew alongside Terry Mood and Mr Green, he brings the collective\'s most melodic side to the table: progressive, emotional deep house and melodic techno for long closing sets.',
+          es: 'Cofundador de Trilogy Crew, representa el puente entre la raíz uruguaya del colectivo y la mirada europea de la escena. Montevideo y Berlín — dos capitales, un mismo pulso.',
+          en: 'Co-founder of Trilogy Crew, he represents the bridge between the collective\'s Uruguayan roots and the European eye of the scene. Montevideo and Berlin — two capitals, one pulse.',
         },
       ],
     },
     meta: {
       based: { es: 'Berlín', en: 'Berlin' },
       origin: { es: 'Uruguay', en: 'Uruguay' },
-      activeSince: '2015',
-      bpmRange: '120–128',
+      activeSince: '2007',
+      bpmRange: '126–135',
     },
     genres: {
-      es: 'Melodic Techno · Progressive · Deep House',
-      en: 'Melodic Techno · Progressive · Deep House',
+      es: 'Tech House · Techno · Peak Time',
+      en: 'Tech House · Techno · Peak Time',
     },
     socials: [
       { platform: 'soundcloud', label: 'SoundCloud', handle: '@pabloxberg', url: 'https://soundcloud.com/pabloxberg', cta: ctaListen },
@@ -479,67 +479,162 @@ export const djs: Dj[] = [
   },
 
   /* ============================================================
-     05 — DJ #5  (placeholder — info pendiente)
+     05 — JOACO AÑÓN
+     Info real provista por el DJ.
      ============================================================ */
   {
-    slug: 'dj-05',
+    slug: 'joaco-anon',
     order: '05',
     letter: 'E',
-    name: 'Próximo DJ',
-    nameLines: ['PRÓXIMO', 'DJ'],
-    photoUrl: '/assets/placeholder-card.jpg',
+    name: 'Joaco Añón',
+    realName: 'Joaco Añón',
+    nameLines: ['JOACO', 'AÑÓN'],
+    photoUrl: '/assets/joaco-anon-card.jpg',
+    heroPhotoUrl: '/assets/joaco-anon-hero.jpg',
     role: {
-      es: 'Info próximamente',
-      en: 'Info coming soon',
+      es: 'House · Minimal Deep Tech',
+      en: 'House · Minimal Deep Tech',
     },
-    accentColor: '#9b7dff',
+    accentColor: '#ffd23a',
     tagline: {
-      es: 'MUY PRONTO.',
-      en: 'COMING SOON.',
+      es: 'HOUSE CON ALMA, PRODUCCIÓN CON IDENTIDAD.',
+      en: 'HOUSE WITH SOUL, PRODUCTION WITH IDENTITY.',
     },
     bio: {
       lead: {
-        es: '"Nuevo miembro del colectivo — presentación próximamente."',
-        en: '"New member of the collective — introduction coming soon."',
+        es: '"Sets potentes, alegres y cargados de energía."',
+        en: '"Powerful, joyful sets charged with energy."',
       },
       paragraphs: [
         {
-          es: 'Este DJ se incorpora al colectivo. La información completa (biografía, estilo, fotos y redes) se publicará en los próximos días.',
-          en: 'This DJ is joining the collective. Full information (bio, style, photos and links) will be published in the coming days.',
+          es: 'Joaco Añón es un DJ y productor uruguayo que comenzó su vínculo con la música electrónica en 2008. Desde 2023 desarrolla una propuesta enfocada en el house, con influencias de minimal deep tech, caracterizada por sets potentes, alegres y cargados de energía.',
+          en: 'Joaco Añón is a Uruguayan DJ and producer who began his bond with electronic music in 2008. Since 2023 he has developed a project focused on house, with minimal deep tech influences, defined by powerful, joyful sets loaded with energy.',
+        },
+        {
+          es: 'Como productor, publicó "Don\'t Go" en Manicomio White, el EP "Discotek" en Miaw y "What the Fuck Is Happening" en Manicomio Music, consolidando progresivamente su identidad sonora.',
+          en: 'As a producer, he released "Don\'t Go" on Manicomio White, the EP "Discotek" on Miaw and "What the Fuck Is Happening" on Manicomio Music, progressively consolidating his sonic identity.',
+        },
+        {
+          es: 'Su propuesta también se destaca por reversionar clásicos musicales y llevarlos al terreno del house, combinando nostalgia y energía de pista a través de sus edits. Es cofundador de Synkro, una marca de eventos enfocada en el house y el minimal deep tech, donde busca generar experiencias que conecten la música, el público y la energía de cada encuentro.',
+          en: 'His proposal also stands out for reworking musical classics into house territory, combining nostalgia and dancefloor energy through his edits. He is co-founder of Synkro, an events brand focused on house and minimal deep tech, where he seeks to create experiences that connect music, audience and the energy of each gathering.',
         },
       ],
     },
     meta: {
-      based: { es: 'TBA', en: 'TBA' },
-      origin: { es: 'TBA', en: 'TBA' },
-      activeSince: '—',
-      bpmRange: '—',
+      based: { es: 'Montevideo', en: 'Montevideo' },
+      origin: { es: 'Uruguay', en: 'Uruguay' },
+      activeSince: '2008',
+      bpmRange: '124–128',
     },
-    socials: [],
+    genres: {
+      es: 'House · Minimal Deep Tech · Edits',
+      en: 'House · Minimal Deep Tech · Edits',
+    },
+    releases: [
+      { title: "Don't Go", label: 'Manicomio White' },
+      { title: 'Discotek (EP)', label: 'Miaw' },
+      { title: 'What the Fuck Is Happening', label: 'Manicomio Music' },
+    ],
+    socials: [
+      { platform: 'instagram', label: 'Instagram', handle: '@joacoanon', url: '#', cta: ctaFollow },
+      { platform: 'soundcloud', label: 'SoundCloud', handle: '@joacoanon', url: '#', cta: ctaListen },
+      { platform: 'spotify', label: 'Spotify', handle: 'Joaco Añón', url: '#', cta: ctaStream },
+      { platform: 'facebook', label: 'Bookings', handle: 'Trilogy Crew', url: 'mailto:bookings@trilogycrew.com', cta: ctaMail },
+    ],
+    clubs: ['Synkro (cofundador)', 'Uruguay'],
     events: [],
     presskit: { size: '—', url: '#' },
     email: 'bookings@trilogycrew.com',
     trackUrls: [
-      'https://soundcloud.com/trilogy-crew',
-      'https://soundcloud.com/trilogy-crew/tracks',
+      'https://soundcloud.com/joacoanon',
+      'https://soundcloud.com/joacoanon/tracks',
     ],
   },
 
   /* ============================================================
-     06 — DJ #6  (placeholder — info pendiente)
+     06 — MATH   (Mathias Molina / Math Music)
+     Info real provista por el DJ.
      ============================================================ */
   {
-    slug: 'dj-06',
+    slug: 'math',
     order: '06',
     letter: 'F',
-    name: 'Próximo DJ',
-    nameLines: ['PRÓXIMO', 'DJ'],
+    name: 'Math',
+    realName: 'Mathias Molina',
+    nameLines: ['MATH', 'MUSIC'],
+    photoUrl: '/assets/math-card.jpg',
+    heroPhotoUrl: '/assets/math-hero.jpg',
+    heroLayout: 'photo-right',
+    role: {
+      es: 'Minimal · Deep Tech · Acid',
+      en: 'Minimal · Deep Tech · Acid',
+    },
+    accentColor: '#9effc7',
+    tagline: {
+      es: 'LA CABINA COMO LIENZO SONORO.',
+      en: 'THE BOOTH AS A SONIC CANVAS.',
+    },
+    bio: {
+      lead: {
+        es: '"Sets precisos, profundos y de conexión directa con la pista."',
+        en: '"Precise, deep sets with a direct connection to the floor."',
+      },
+      paragraphs: [
+        {
+          es: 'Math (Mathias Molina / Math Music) es un DJ y artista visual uruguayo radicado en Montevideo. Con un recorrido que comenzó en 2015 cruzando la pintura, el diseño y el tatuaje, traslada esa misma sensibilidad a las bandejas, concibiendo la cabina como un lienzo sonoro en constante movimiento.',
+          en: 'Math (Mathias Molina / Math Music) is a Uruguayan DJ and visual artist based in Montevideo. With a journey that began in 2015 crossing painting, design and tattooing, he brings that same sensibility to the decks, conceiving the booth as a sonic canvas in constant motion.',
+        },
+        {
+          es: 'Su sonido recorre el minimal, el deep tech, el house y matices del acid, construyendo así una identidad estética propia.',
+          en: 'His sound travels through minimal, deep tech, house and acid nuances, building an aesthetic identity of his own along the way.',
+        },
+        {
+          es: 'Con trayectoria en salas y eventos de Uruguay, Brasil y España, y habiendo compartido cabinas con grandes referentes de la escena nacional e internacional, desarrolla sets precisos, profundos y de conexión directa con la pista.',
+          en: 'With experience in venues and events across Uruguay, Brazil and Spain, having shared booths with major names of the national and international scene, he delivers precise, deep sets with a direct connection to the floor.',
+        },
+      ],
+    },
+    meta: {
+      based: { es: 'Montevideo', en: 'Montevideo' },
+      origin: { es: 'Uruguay', en: 'Uruguay' },
+      activeSince: '2015',
+      bpmRange: '124–130',
+    },
+    genres: {
+      es: 'Minimal · Deep Tech · House · Acid',
+      en: 'Minimal · Deep Tech · House · Acid',
+    },
+    socials: [
+      { platform: 'instagram', label: 'Instagram', handle: '@math.music', url: '#', cta: ctaFollow },
+      { platform: 'soundcloud', label: 'SoundCloud', handle: '@mathmusic', url: '#', cta: ctaListen },
+      { platform: 'spotify', label: 'Spotify', handle: 'Math', url: '#', cta: ctaStream },
+      { platform: 'facebook', label: 'Bookings', handle: 'Trilogy Crew', url: 'mailto:bookings@trilogycrew.com', cta: ctaMail },
+    ],
+    clubs: ['Uruguay', 'Brasil', 'España'],
+    events: [],
+    presskit: { size: '—', url: '#' },
+    email: 'bookings@trilogycrew.com',
+    trackUrls: [
+      'https://soundcloud.com/mathmusic',
+      'https://soundcloud.com/mathmusic/tracks',
+    ],
+  },
+
+  /* ============================================================
+     07 — NICO   (placeholder — info pendiente)
+     ============================================================ */
+  {
+    slug: 'nico',
+    order: '07',
+    letter: 'G',
+    name: 'Nico',
+    nameLines: ['NICO'],
     photoUrl: '/assets/placeholder-card.jpg',
     role: {
       es: 'Info próximamente',
       en: 'Info coming soon',
     },
-    accentColor: '#ffb84d',
+    accentColor: '#b48bff',
     tagline: {
       es: 'MUY PRONTO.',
       en: 'COMING SOON.',
@@ -551,8 +646,8 @@ export const djs: Dj[] = [
       },
       paragraphs: [
         {
-          es: 'Este DJ se incorpora al colectivo. La información completa (biografía, estilo, fotos y redes) se publicará en los próximos días.',
-          en: 'This DJ is joining the collective. Full information (bio, style, photos and links) will be published in the coming days.',
+          es: 'Nico se incorpora al colectivo. La información completa (biografía, estilo, fotos y redes) se publicará en los próximos días.',
+          en: 'Nico is joining the collective. Full information (bio, style, photos and links) will be published in the coming days.',
         },
       ],
     },
@@ -590,7 +685,7 @@ export const crewEvents: DjEvent[] = [
 
 export const crewStats = {
   founded: '2024',
-  members: '06',
+  members: '07',
   base: 'MVD',
-  events: '24',
+  events: '28',
 } as const;

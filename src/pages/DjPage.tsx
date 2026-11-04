@@ -23,7 +23,7 @@ export default function DjPage() {
     ? ({ '--dj-accent': dj.accentColor } as React.CSSProperties)
     : undefined;
 
-  const fullName = `${dj.nameLines[0]} ${dj.nameLines[1]}`;
+  const fullName = dj.nameLines.join(' ');
 
   return (
     <section className="page dj-page" style={pageStyle}>
