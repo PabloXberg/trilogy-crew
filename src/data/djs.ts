@@ -355,27 +355,31 @@ export const djs: Dj[] = [
     photoUrl: '/assets/pablo-xberg-card.jpg',
     heroPhotoUrl: '/assets/pablo-xberg-hero.jpg',
     role: {
-      es: 'Melódico · Progresivo · Amanecer',
-      en: 'Melodic · Progressive · Sunrise',
+      es: 'Tech House · Techno · Peak Time',
+      en: 'Tech House · Techno · Peak Time',
     },
     accentColor: '#ff5a1f',
     tagline: {
-      es: 'EN LA LÍNEA ENTRE EL TECH HOUSE Y EL TECHNO.',
-      en: 'ON THE LINE BETWEEN TECH HOUSE AND TECHNO.',
+      es: 'EN LA FINA LÍNEA ENTRE EL TECHNO Y EL TECH HOUSE.',
+      en: 'ON THE FINE LINE BETWEEN TECHNO AND TECH HOUSE.',
     },
     bio: {
       lead: {
-        es: '"El sonido más cercano al techno dentro de Trilogy — ideal para los cierres potentes."',
-        en: '"The sound closest to techno inside Trilogy — made for powerful closings."',
+        es: '"Viajo en la fina línea entre el techno y el tech house, con fusiones de techno melódico o minimal techno."',
+        en: '"I travel the fine line between techno and tech house, with fusions of melodic techno or minimal techno."',
       },
       paragraphs: [
         {
-          es: 'Pablo Xberg (Pablo Morena) comenzó su camino detrás de las bandejas hace casi 20 años, junto a Terry Mood, en los primeros circuitos clandestinos de Montevideo. Desde hace 17 años vive en Berlín, donde absorbió la crudeza y la precisión de la escena techno más influyente del mundo.',
-          en: 'Pablo Xberg (Pablo Morena) started behind the decks almost 20 years ago alongside Terry Mood, in the first underground circuits of Montevideo. He has lived in Berlin for the last 17 years, absorbing the rawness and precision of the world\'s most influential techno scene.',
+          es: 'Pablo Xberg (Pablo Morena) comenzó su camino detrás de las bandejas hace casi 20 años, junto a Terry Mood, en los primeros circuitos clandestinos de Montevideo. Desde hace 17 años vive en Berlín, donde absorbió la crudeza, la precisión y la riqueza melódica de la escena techno más influyente del mundo.',
+          en: 'Pablo Xberg (Pablo Morena) started behind the decks almost 20 years ago alongside Terry Mood, in the first underground circuits of Montevideo. He has lived in Berlin for the last 17 years, absorbing the rawness, precision and melodic richness of the world\'s most influential techno scene.',
         },
         {
-          es: 'Dentro de Trilogy Crew aporta el lado más duro del espectro: su sonido camina sobre la línea entre el tech house y el techno, con kicks envolventes, percusión seca y un sentido del timing afilado tras años de residencias y afters berlineses. Su cabina es terreno natural para los cierres potentes, esos sets donde la pista ya está lista para que no vuelva a bajar.',
-          en: 'Within Trilogy Crew, he brings the hardest side of the spectrum: his sound walks the line between tech house and techno, with wrapping kicks, dry percussion and a sense of timing sharpened by years of Berlin residencies and after-hours. His booth is the natural ground for powerful closings — the kind of sets where the floor is ready never to come back down.',
+          es: 'Su sonido viaja en la fina línea entre el techno y el tech house, atravesado por fusiones de techno melódico y minimal techno. Kicks envolventes, percusión seca, arreglos que respiran — una paleta que se abre desde la pista hacia lo introspectivo sin perder la contundencia.',
+          en: 'His sound travels the fine line between techno and tech house, crossed by fusions of melodic techno and minimal techno. Wrapping kicks, dry percussion, arrangements that breathe — a palette that opens from the dancefloor towards the introspective without losing weight.',
+        },
+        {
+          es: 'Dentro de Trilogy Crew aporta el lado más duro del espectro: cabina natural para los cierres potentes, esos sets donde la pista ya está lista para que no vuelva a bajar. Años de residencias y afters berlineses le dieron un sentido del timing afilado que se nota en cada transición.',
+          en: 'Within Trilogy Crew, he brings the hardest side of the spectrum: a natural booth for powerful closings — the kind of sets where the floor is ready never to come back down. Years of Berlin residencies and after-hours gave him a sharp sense of timing that shows in every transition.',
         },
         {
           es: 'Cofundador de Trilogy Crew, representa el puente entre la raíz uruguaya del colectivo y la mirada europea de la escena. Montevideo y Berlín — dos capitales, un mismo pulso.',
@@ -390,8 +394,8 @@ export const djs: Dj[] = [
       bpmRange: '126–135',
     },
     genres: {
-      es: 'Tech House · Techno · Peak Time',
-      en: 'Tech House · Techno · Peak Time',
+      es: 'Tech House · Techno · Techno Melódico · Minimal Techno',
+      en: 'Tech House · Techno · Melodic Techno · Minimal Techno',
     },
     socials: [
       { platform: 'soundcloud', label: 'SoundCloud', handle: '@pabloxberg', url: 'https://soundcloud.com/pabloxberg', cta: ctaListen },
