@@ -370,8 +370,8 @@ export const djs: Dj[] = [
       },
       paragraphs: [
         {
-          es: 'Pablo Xberg (Pablo Morena) comenzó su camino detrás de las bandejas hace casi 20 años, junto a Terry Mood, en los primeros circuitos clandestinos de Montevideo. Desde hace 17 años vive en Berlín, donde absorbió la crudeza, la precisión y la riqueza melódica de la escena techno más influyente del mundo.',
-          en: 'Pablo Xberg (Pablo Morena) started behind the decks almost 20 years ago alongside Terry Mood, in the first underground circuits of Montevideo. He has lived in Berlin for the last 17 years, absorbing the rawness, precision and melodic richness of the world\'s most influential techno scene.',
+          es: 'Pablo Xberg comenzó su camino detrás de las bandejas hace casi 20 años, junto a Terry Mood, en los primeros circuitos clandestinos de Montevideo. Desde hace 17 años vive en Berlín, donde absorbió la crudeza, la precisión y la riqueza melódica de la escena techno más influyente del mundo.',
+          en: 'Pablo Xberg started behind the decks almost 20 years ago alongside Terry Mood, in the first underground circuits of Montevideo. He has lived in Berlin for the last 17 years, absorbing the rawness, precision and melodic richness of the world\'s most influential techno scene.',
         },
         {
           es: 'Su sonido viaja en la fina línea entre el techno y el tech house, atravesado por fusiones de techno melódico y minimal techno. Kicks envolventes, percusión seca, arreglos que respiran — una paleta que se abre desde la pista hacia lo introspectivo sin perder la contundencia.',
