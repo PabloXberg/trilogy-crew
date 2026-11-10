@@ -117,8 +117,14 @@ nav.top ul a.active::after {
   left: 0;
   right: 0;
   bottom: -2px;
-  height: 1px;
-  background: var(--accent);
+  height: 2px;
+  /* Falls back to --accent when --dj-accent is not defined (e.g. on Home) */
+  background: var(--dj-accent, var(--accent));
+  box-shadow: 0 0 10px -2px var(--dj-accent, var(--accent));
+}
+/* On hover of a DJ link (even when not active), subtle color tint */
+nav.top ul a:hover {
+  color: var(--dj-accent, var(--text));
 }
 .right-cluster {
   display: flex;

@@ -54,6 +54,11 @@ export default function Nav() {
             <NavLink
               to={`/dj/${dj.slug}`}
               className={({ isActive }) => (isActive ? 'active' : '')}
+              style={
+                dj.accentColor
+                  ? ({ '--dj-accent': dj.accentColor } as React.CSSProperties)
+                  : undefined
+              }
             >
               {dj.name}
             </NavLink>
@@ -87,8 +92,13 @@ export default function Nav() {
             key={dj.slug}
             to={`/dj/${dj.slug}`}
             onClick={() => setOpen(false)}
+            style={
+              dj.accentColor
+                ? ({ '--dj-accent': dj.accentColor } as React.CSSProperties)
+                : undefined
+            }
           >
-            <span className="mm-num">/{dj.order}</span>
+            <span className="mm-num" style={{ color: dj.accentColor }}>/{dj.order}</span>
             {dj.name}
           </NavLink>
         ))}
