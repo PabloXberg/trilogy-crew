@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useLang } from '../contexts/LangContext';
 import type { Dj } from '../data/djs';
+import { assetUrl } from '../utils/assetUrl';
 
 interface Props {
   dj: Dj;
@@ -28,7 +29,7 @@ export default function DjCard({ dj }: Props) {
     >
       <div className="num">/{dj.letter}</div>
       <div className="photo">
-        <img src={dj.photoUrl} alt={dj.name} />
+        <img src={assetUrl(dj.photoUrl)} alt={dj.name} />
       </div>
       <div>
         <div className="name">{dj.name}</div>

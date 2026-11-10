@@ -9,6 +9,7 @@ import PresskitBox from '../components/PresskitBox';
 import SocialLinks from '../components/SocialLinks';
 import SpotifyEmbed from '../components/SpotifyEmbed';
 import Tracks from '../components/Tracks';
+import { assetUrl } from '../utils/assetUrl';
 
 export default function DjPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -31,7 +32,7 @@ export default function DjPage() {
       <div className={`dj-hero ${dj.heroLayout === 'photo-right' ? 'photo-right' : ''}`}>
         <div className="photo-lg">
           <div className="tag">/// MEMBER {dj.order}</div>
-          <img src={dj.heroPhotoUrl ?? dj.photoUrl} alt={dj.name} />
+          <img src={assetUrl(dj.heroPhotoUrl ?? dj.photoUrl)} alt={dj.name} />
         </div>
         <div className="info">
           <div

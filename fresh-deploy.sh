@@ -1,16 +1,9 @@
 #!/usr/bin/env bash
 # =====================================================================
 # Fresh deploy for trilogy-crew on VPS.
-# Use when the existing /var/www/trilogy-crew is broken or missing.
-#
-# Prereqs:
-#   - A zip "trilogy-crew.zip" uploaded to /tmp/trilogy-crew.zip
-#   - Run as root (or with sudo)
-#
 # Usage:
-#   cd /tmp
-#   unzip -o trilogy-crew.zip   # only to get THIS script out
-#   bash /tmp/trilogy-crew/fresh-deploy.sh
+#   Upload trilogy-crew.zip to /tmp/
+#   bash fresh-deploy.sh
 # =====================================================================
 set -euo pipefail
 
@@ -23,12 +16,9 @@ if [ ! -f "$ZIP_PATH" ]; then
   exit 1
 fi
 
-echo ">>> 1. Backing up existing site (if any) to $BACKUP_DIR"
+echo ">>> 1. Backup del sitio actual → $BACKUP_DIR"
 if [ -d "$TARGET_DIR" ]; then
   mv "$TARGET_DIR" "$BACKUP_DIR"
-  echo "    Backup hecho."
-else
-  echo "    No había sitio previo."
 fi
 
 echo ">>> 2. Extracting fresh zip"
@@ -40,30 +30,43 @@ unzip -q "$ZIP_PATH"
 mv trilogy-crew "$TARGET_DIR"
 cd /
 
-echo ">>> 3. Sanity check on package.json"
+echo ">>> 3. Verificando package.json"
 head -1 "$TARGET_DIR/package.json"
 if ! head -1 "$TARGET_DIR/package.json" | grep -q "^{"; then
-  echo "ERROR: package.json no es JSON válido. Zip corrupto."
+  echo "ERROR: package.json no es JSON válido."
   exit 1
 fi
 
-echo ">>> 4. Installing dependencies (may take 1-2 min)"
+echo ">>> 4. npm install"
 cd "$TARGET_DIR"
 npm install
 
-echo ">>> 5. Building production bundle"
+echo ">>> 5. npm run build"
 npm run build
 
-echo ">>> 6. Setting permissions"
+echo ">>> 6. Cache-busting: añadiendo ?v=TIMESTAMP a URLs de assets"
+BUILD_VERSION=$(date +%s)
+# Inyectar la versión en el index.html para que el JS/CSS la lea
+if [ -f "$TARGET_DIR/dist/index.html" ]; then
+  sed -i "s|</head>|<meta name=\"build-version\" content=\"${BUILD_VERSION}\" /></head>|" \
+    "$TARGET_DIR/dist/index.html"
+fi
+
+echo ">>> 7. Permisos"
 chown -R www-data:www-data "$TARGET_DIR/dist" 2>/dev/null || true
 chmod -R 755 "$TARGET_DIR/dist"
 
-echo ">>> 7. Reloading nginx"
+echo ">>> 8. Reload nginx"
 systemctl reload nginx
 
 echo ""
 echo "=============================================="
-echo "✓  DEPLOY COMPLETE"
+echo "✓  DEPLOY COMPLETE   (version: $BUILD_VERSION)"
 echo "   Site: https://trilogycrew.com"
-echo "   Backup of old site: $BACKUP_DIR"
 echo "=============================================="
+echo ""
+echo "IMPORTANTE: si al abrir no ves las imágenes nuevas,"
+echo "hacé HARD REFRESH en el navegador:"
+echo "  - Windows / Linux:  Ctrl + Shift + R"
+echo "  - Mac:              Cmd  + Shift + R"
+echo "O abrí en modo incógnito."

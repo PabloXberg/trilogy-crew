@@ -1,4 +1,5 @@
 import { useLang } from '../contexts/LangContext';
+import { assetUrl } from '../utils/assetUrl';
 
 interface HomeFooterProps {
   variant: 'home';
@@ -18,7 +19,7 @@ export default function Footer(props: FooterProps) {
   return (
     <footer className="site-footer">
       <div className="col brand-col">
-        <img src="/assets/logo-white.png" alt="" />
+        <img src={assetUrl('/assets/logo-white.png') ?? ''} alt="" />
         <strong>{props.variant === 'home' ? 'TRILOGY CREW' : props.djName}</strong>
         <p>{t('footer.brand.tag')}</p>
       </div>

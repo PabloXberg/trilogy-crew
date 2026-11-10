@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { assetUrl } from '../utils/assetUrl';
 
 interface Props {
   /** Real photo paths. If provided, renders these instead of placeholders. */
@@ -20,12 +21,12 @@ export default function Gallery({ photos, slots = 8 }: Props) {
               className="gallery-item has-photo"
               role="button"
               tabIndex={0}
-              onClick={() => setLightbox(src)}
+              onClick={() => setLightbox(assetUrl(src) ?? src)}
               onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') setLightbox(src);
+                if (e.key === 'Enter' || e.key === ' ') setLightbox(assetUrl(src) ?? src);
               }}
             >
-              <img src={src} alt={`Live ${i + 1}`} loading="lazy" />
+              <img src={assetUrl(src)} alt={`Live ${i + 1}`} loading="lazy" />
             </div>
           ))}
         </div>

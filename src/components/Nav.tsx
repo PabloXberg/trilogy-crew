@@ -4,6 +4,7 @@ import { useLang } from '../contexts/LangContext';
 import { djs } from '../data/djs';
 import Clock from './Clock';
 import LangToggle from './LangToggle';
+import { assetUrl } from '../utils/assetUrl';
 
 export default function Nav() {
   const { t } = useLang();
@@ -38,7 +39,7 @@ export default function Nav() {
           if (e.key === 'Enter' || e.key === ' ') goHome();
         }}
       >
-        <img src="/assets/logo-white.png" alt="Trilogy Crew" />
+        <img src={assetUrl('/assets/logo-white.png')} alt="Trilogy Crew" />
         <div className="name">TRILOGY</div>
       </div>
 
