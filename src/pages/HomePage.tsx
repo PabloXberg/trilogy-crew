@@ -1,5 +1,5 @@
 import { useLang } from '../contexts/LangContext';
-import { djs, crewEvents, crewStats } from '../data/djs';
+import { djs, crewEvents } from '../data/djs';
 import DjCard from '../components/DjCard';
 import EventList from '../components/EventList';
 import Footer from '../components/Footer';
@@ -27,13 +27,28 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* DJs grid */}
+      {/* 01 — Sobre nosotros (manifiesto arriba) */}
+      <section className="section about-section">
+        <div className="section-head">
+          <span className="num">/01 — {t('home.about.num')}</span>
+          <h2>{t('home.about.title')}</h2>
+        </div>
+        <div className="manifesto-single">
+          <p
+            className="lead"
+            dangerouslySetInnerHTML={{ __html: t('home.about.lead') }}
+          />
+          <p className="body-text">{t('home.about.body')}</p>
+        </div>
+      </section>
+
+      {/* 02 — Miembros */}
       <div className="section" style={{ padding: 0 }}>
         <div
           className="section-head"
           style={{ padding: '48px 32px 20px', marginBottom: 0 }}
         >
-          <span className="num">/01 — {t('home.members.num')}</span>
+          <span className="num">/02 — {t('home.members.num')}</span>
           <h2>{t('home.members.title')}</h2>
         </div>
         <div className="djs-grid">
@@ -43,42 +58,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Manifesto */}
-      <section className="section">
-        <div className="section-head">
-          <span className="num">/02 — {t('home.about.num')}</span>
-          <h2>{t('home.about.title')}</h2>
-        </div>
-        <div className="manifesto">
-          <div>
-            <p
-              className="lead"
-              dangerouslySetInnerHTML={{ __html: t('home.about.lead') }}
-            />
-            <p>{t('home.about.body')}</p>
-          </div>
-          <div className="stats">
-            <div className="stat">
-              <span>{t('home.stat.founded')}</span>
-              <span className="v">{crewStats.founded}</span>
-            </div>
-            <div className="stat">
-              <span>{t('home.stat.members')}</span>
-              <span className="v">{crewStats.members}</span>
-            </div>
-            <div className="stat">
-              <span>{t('home.stat.base')}</span>
-              <span className="v">{crewStats.base}</span>
-            </div>
-            <div className="stat">
-              <span>{t('home.stat.events')}</span>
-              <span className="v">{crewStats.events}</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Events */}
+      {/* 03 — Próximos eventos */}
       <section className="section">
         <div className="section-head">
           <span className="num">/03 — {t('home.events.num')}</span>

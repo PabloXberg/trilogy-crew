@@ -358,7 +358,7 @@ export const djs: Dj[] = [
       es: 'Tech House · Techno · Peak Time',
       en: 'Tech House · Techno · Peak Time',
     },
-    accentColor: '#ff5a1f',
+    accentColor: '#ffcc00',
     tagline: {
       es: 'EN LA FINA LÍNEA ENTRE EL TECHNO Y EL TECH HOUSE.',
       en: 'ON THE FINE LINE BETWEEN TECHNO AND TECH HOUSE.',
@@ -370,8 +370,8 @@ export const djs: Dj[] = [
       },
       paragraphs: [
         {
-          es: 'Pablo Xberg comenzó su camino detrás de las bandejas hace casi 20 años, junto a Terry Mood, en los primeros circuitos clandestinos de Montevideo. Desde hace 17 años vive en Berlín, donde absorbió la crudeza, la precisión y la riqueza melódica de la escena techno más influyente del mundo.',
-          en: 'Pablo Xberg started behind the decks almost 20 years ago alongside Terry Mood, in the first underground circuits of Montevideo. He has lived in Berlin for the last 17 years, absorbing the rawness, precision and melodic richness of the world\'s most influential techno scene.',
+          es: 'Pablo Xberg (Pablo Morena) comenzó su camino detrás de las bandejas hace casi 20 años, junto a Terry Mood, en los primeros circuitos clandestinos de Montevideo. Desde hace 17 años vive en Berlín, donde absorbió la crudeza, la precisión y la riqueza melódica de la escena techno más influyente del mundo.',
+          en: 'Pablo Xberg (Pablo Morena) started behind the decks almost 20 years ago alongside Terry Mood, in the first underground circuits of Montevideo. He has lived in Berlin for the last 17 years, absorbing the rawness, precision and melodic richness of the world\'s most influential techno scene.',
         },
         {
           es: 'Su sonido viaja en la fina línea entre el techno y el tech house, atravesado por fusiones de techno melódico y minimal techno. Kicks envolventes, percusión seca, arreglos que respiran — una paleta que se abre desde la pista hacia lo introspectivo sin perder la contundencia.',
@@ -390,7 +390,7 @@ export const djs: Dj[] = [
     meta: {
       based: { es: 'Berlín', en: 'Berlin' },
       origin: { es: 'Uruguay', en: 'Uruguay' },
-      activeSince: '2007',
+      activeSince: '2006',
       bpmRange: '126–135',
     },
     genres: {
@@ -411,13 +411,19 @@ export const djs: Dj[] = [
       'Soho Punta del Este',
       'Fiestas al aire libre (Berlín)',
     ],
+    rider: [
+      { label: { es: 'Opción 1 — CDJs', en: 'Option 1 — CDJs' }, gear: '3× CDJ-2000NXS · DJM-900' },
+      { label: { es: 'Opción 2 — Vinilos', en: 'Option 2 — Vinyl' }, gear: '2× Technics MK2 · DJM-900' },
+    ],
     gallery: [
       '/assets/pablo-1.jpg',
       '/assets/pablo-2.jpg',
       '/assets/pablo-3.jpg',
+      '/assets/pablo-4.jpg',
       '/assets/pablo-5.jpg',
       '/assets/pablo-6.jpg',
       '/assets/pablo-7.jpg',
+      '/assets/pablo-8.jpg',
     ],
     events: [],
     presskit: { size: 'PDF', url: '/assets/pablo-xberg-presskit.pdf' },
@@ -699,7 +705,7 @@ export const crewEvents: DjEvent[] = [
 ];
 
 export const crewStats = {
-  founded: '2024',
+  founded: '2010',
   members: '07',
   base: 'MVD',
   events: '28',

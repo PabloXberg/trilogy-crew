@@ -467,6 +467,39 @@ main {
   width: 4px;
   background: linear-gradient(to bottom, #ff5a1f, #1fc7ff, #c7ff3a);
 }
+
+/* Single-column manifesto — no stats table, wider column */
+.manifesto-single {
+  max-width: 900px;
+}
+.manifesto-single .lead {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4.2vw, 56px);
+  line-height: 1.05;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  color: var(--text);
+  margin-bottom: 32px;
+  position: relative;
+  padding-left: 24px;
+}
+.manifesto-single .lead::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 4px;
+  background: linear-gradient(to bottom, #ffcc00, #ff5a1f, #1fc7ff, #c7ff3a);
+}
+.manifesto-single .body-text {
+  font-family: var(--font-serif);
+  font-size: 19px;
+  line-height: 1.75;
+  max-width: 760px;
+  color: var(--text);
+  padding-left: 24px;
+}
 .manifesto p {
   font-family: var(--font-serif);
   font-size: 17px;

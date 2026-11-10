@@ -8,7 +8,7 @@ export const translations = {
   es: {
     'nav.home': 'Inicio',
 
-    'home.meta.year': 'FUNDADO 2024 / MONTEVIDEO',
+    'home.meta.year': 'FUNDADO 2010 / MONTEVIDEO',
     'home.meta.vol': 'VOL. 001',
     'home.meta.tag': 'COLECTIVO DE DJS',
     'home.tagline':
@@ -82,7 +82,7 @@ export const translations = {
   en: {
     'nav.home': 'Home',
 
-    'home.meta.year': 'EST. 2024 / MONTEVIDEO',
+    'home.meta.year': 'EST. 2010 / MONTEVIDEO',
     'home.meta.vol': 'VOL. 001',
     'home.meta.tag': 'DJ COLLECTIVE',
     'home.tagline':
