@@ -276,7 +276,7 @@ export const djs: Dj[] = [
       es: 'Minimal · House · Tech House',
       en: 'Minimal · House · Tech House',
     },
-    accentColor: '#22c55e',
+    accentColor: '#00e676',
     tagline: {
       es: 'SETS SIN GUION, PURA PISTA.',
       en: 'UNSCRIPTED SETS, PURE DANCEFLOOR.',
@@ -516,7 +516,7 @@ export const djs: Dj[] = [
       es: 'House · Minimal Deep Tech',
       en: 'House · Minimal Deep Tech',
     },
-    accentColor: '#ffd23a',
+    accentColor: '#ff7a1a',
     tagline: {
       es: 'HOUSE CON ALMA, PRODUCCIÓN CON IDENTIDAD.',
       en: 'HOUSE WITH SOUL, PRODUCTION WITH IDENTITY.',
@@ -590,7 +590,7 @@ export const djs: Dj[] = [
       es: 'Minimal · Deep Tech · Acid',
       en: 'Minimal · Deep Tech · Acid',
     },
-    accentColor: '#9effc7',
+    accentColor: '#c136ff',
     tagline: {
       es: 'LA CABINA COMO LIENZO SONORO.',
       en: 'THE BOOTH AS A SONIC CANVAS.',
@@ -642,8 +642,10 @@ export const djs: Dj[] = [
   },
 
   /* ============================================================
-     07 — NICO   (placeholder — info pendiente)
+     07 — NICO  (temporalmente oculto - a la espera de info real)
+     Para reactivarlo: descomentar el bloque de abajo.
      ============================================================ */
+  /*
   {
     slug: 'nico',
     order: '07',
@@ -687,6 +689,7 @@ export const djs: Dj[] = [
       'https://soundcloud.com/trilogy-crew/tracks',
     ],
   },
+  */
 ];
 
 export function getDjBySlug(slug: string): Dj | undefined {
@@ -706,7 +709,7 @@ export const crewEvents: DjEvent[] = [
 
 export const crewStats = {
   founded: '2010',
-  members: '07',
+  members: '06',
   base: 'MVD',
   events: '28',
 } as const;

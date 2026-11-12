@@ -367,14 +367,9 @@ main {
 .dj-card:nth-child(3n) {
   border-right: none;
 }
-/* The 7th (lonely last) card: center it across the full row */
-.dj-card:nth-child(7) {
-  grid-column: 1 / -1;
-  border-right: none;
+/* Remove bottom border on last row (6-card layout = last 3 cards) */
+.dj-card:nth-last-child(-n + 3) {
   border-bottom: none;
-  max-width: 33.333%;
-  margin: 0 auto;
-  width: 100%;
 }
 .dj-card:hover {
   background: var(--bg-2);
@@ -392,7 +387,7 @@ main {
 .dj-card .photo {
   margin: 24px 0 28px;
   width: 100%;
-  aspect-ratio: 1/1;
+  aspect-ratio: 4/5;
   background: var(--bg-2);
   border: 1px solid var(--line);
   overflow: hidden;
